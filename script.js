@@ -325,6 +325,7 @@ console.log("Il prodotto di a e c è: " + prodotto_ac);
 
 //PROMPT
 // prompt("Quanti anni hai?"); //mostra una finestra di prompt che chiede all'utente "Quanti anni hai?" e attende l'input dell'utente
+//In JavaScript, prompt() è un metodo che visualizza una finestra di dialogo (popup) con un messaggio e un campo di testo per l'utente.
 //ma dov'è memorizzato l'input dell'utente? Non viene memorizzato in nessuna variabile, quindi non possiamo usarlo successivamente nel codice
 
 // const age = prompt("Quanti anni hai?"); //mostra una finestra di prompt che chiede all'utente "Quanti anni hai?" e memorizza l'input dell'utente nella variabile "age"
@@ -333,6 +334,11 @@ console.log("Il prodotto di a e c è: " + prodotto_ac);
 
 // console.log(age); //"123" (stringa)
 // console.log(typeof age); //string
+
+
+// DIFFERENZA TRA ALERT E PROMPT
+//La differenza principale è che alert() mostra un messaggio all'utente e non restituisce alcun valore, mentre prompt() mostra un messaggio e una casella di input, consentendo all'utente di inserire un valore che la funzione poi restituisce. In sintesi, alert() è per comunicare, prompt() è per richiedere e ottenere un input dall'utente. 
+
 
 
 //CALCOLATRICE BASE
