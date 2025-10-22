@@ -223,6 +223,17 @@ console.log("Il prodotto di a e c è: " + prodotto_ac);
 // console.log(newSumOfNumbers); //stampa il valore della variabile "newSumOfNumbers" nella console
 
 
+let topolino = 5;
+topolino = topolino + 10; //vale 15
+topolino += 10; //l'equivalente a: topolino = topolino + 10;
+
+topolino = topolino + 1;
+topolino += 1;
+topolino++;//l'equivalente a: topolino = topolino + 1; //l'operatore ++ incrementa la variabile contatore di 1 dopo che il suo valore attuale è stato utilizzato nell'operazione corrente.
+//contatore++ in JavaScript è un operatore di incremento postfisso che aumenta il valore di una variabile di 1 dopo che il suo valore corrente è stato utilizzato in un'espressione.
+
+
+
 //Le variabi non vanno tra virgolette, perché altrimenti verrebbero interpretate come stringhe e non come nomi di variabili. Solo i dati di tipo stringa vanno tra virgolette.
 //Esempio: 
 // let nome = "Jordy"; //corretto
@@ -237,7 +248,7 @@ console.log("Il prodotto di a e c è: " + prodotto_ac);
 
 //DIFFERENZA TRA VAR E LET (IMPORTANTE)
 //la differenza principale tra "var" e "let" riguarda l'ambito (scope) delle variabili dichiarate con queste parole chiave. Le variabili dichiarate con "var" hanno un ambito di funzione, mentre le variabili dichiarate con "let" hanno un ambito di blocco.
-
+//il "var" può cambiare valore, il "let" no, è bloccata. Questo può sembrare uno svantaggio ma non lo è. 
 
 // let pluto = pippo + 30; //Javascript cerca il valore di "pippo", che viene definito nella riga precedente. Quindi pluto vale 5 + 30, che risulta in 35. Javascript può usare la variabile perché essa è già definita
 // // la variabile "pluto" viene calcolata dopo che "pippo" è stata definita. JAVASCRIPT SEGNALA UN ERRORE SE SI CERCA DI USARE UNA VARIABILE PRIMA CHE SIA STATA DEFINITA.

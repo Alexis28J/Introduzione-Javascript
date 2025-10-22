@@ -19,6 +19,12 @@
 //     alert("Scusa, pensavo fossi Alexis");
 // }
 
+// CORREZIONE
+
+//const firstName = prompt ("Come ti chiami?");  //abituarsi a mettere delle parole in inglese e non nella propria lingua
+// alert ("Tanti Auguri a " + firstName); // bastava così, non c'era bisogno di complicarsi la vita
+
+
 // --------------------------------------------------------------
 
 //2)
@@ -60,20 +66,22 @@
 // const ageNumber = Number(age); 
 
 // if (ageNumber >= 18){
-//     alert("Puoi entrare. PREGO");
+//     alert("Puoi entrare");
 // }else{
 //     alert("ACCESSO NEGATO");
 // }
+
+//In questo caso else non è necessario, solo basta l'if.
+
 
 //---------------------------------------------------------------------
 
 //5)
 
-const word = prompt("Inserisci una frase");
-const wordString = String(word);
-const wordMaiusc = word.toUpperCase();
+// const word = prompt("Inserisci una frase");
+// const wordMaiusc = word.toUpperCase();
 
-alert(wordMaiusc);
+// alert(wordMaiusc);
 
 
 //Per convertire la stringa in maiuscolo, si usa il metodo toUpperCase();
@@ -81,3 +89,38 @@ alert(wordMaiusc);
 // let stringaOriginale = "ciao mondo";
 // let stringaMaiuscola = stringaOriginale.toUpperCase();
 // // stringaMaiuscola ora contiene "CIAO MONDO"
+
+
+
+// -----------------------------------------------------------------------------------------
+
+
+//ESERCIZI IN CLASSE
+
+//6) fai un ciclo for che stampi il quadrato dei numeri da 1 a 100 
+
+for (let i = 1; i <= 100; i++) {   //o scrivere < 101
+   const square = i ** 2;
+   console.log(square);
+}
+
+
+//7) fai un ciclo che per i numeri di 1 al 100 stampi pari se il numero è pari e dispari se il numero è dispari
+
+for (let i = 1; i < 101 ; i++) {
+
+   if (i % 2 === 0) {
+    console.log("pari")
+
+   } else {
+    console.log("dispari")
+    
+   }
+    
+}
+
+
+// COMPITI 
+
+//8) Usando un ciclo logga i numeri da 1 a 100 mettendo un asterisco vicino ai multipli di 7
+//9) Usando un ciclo logga i numeri da 1 a 100 mettendo un asterisco vicino ai quadrati perfetti
