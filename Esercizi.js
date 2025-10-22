@@ -99,28 +99,39 @@
 
 //6) fai un ciclo for che stampi il quadrato dei numeri da 1 a 100 
 
-for (let i = 1; i <= 100; i++) {   //o scrivere < 101
-   const square = i ** 2;
-   console.log(square);
-}
+// for (let i = 1; i <= 100; i++) {   //o scrivere < 101
+//    const square = i ** 2;
+//    console.log(square);
+// }
+
+// ora lo facciamo con while
+
+// let numberOne = 1;
+
+// while (numberOne < 101) {
+//     console.log(numberOne ** 2);
+//     numberOne++;
 
 
 //7) fai un ciclo che per i numeri di 1 al 100 stampi pari se il numero è pari e dispari se il numero è dispari
 
-for (let i = 1; i < 101 ; i++) {
+// for (let i = 1; i < 101 ; i++) {
 
-   if (i % 2 === 0) {
-    console.log("pari")
+//    if (i % 2 === 0) {
+//     console.log("pari")
 
-   } else {
-    console.log("dispari")
+//    } else {
+//     console.log("dispari")
     
-   }
+//    }
     
-}
+// }
 
 
 // COMPITI 
 
 //8) Usando un ciclo logga i numeri da 1 a 100 mettendo un asterisco vicino ai multipli di 7
 //9) Usando un ciclo logga i numeri da 1 a 100 mettendo un asterisco vicino ai quadrati perfetti
+//10) chiedi all'utente un numero (positivo) di partenza e poi logga tutti i numeri dal numero dato fino a 0
+//11) chiedi all'utente due numeri e logga tutti i numeri pari compresi tra i numeri forniti dall'utente
+//12) chiedi all'utente quanti anni ha e digli quante ore ha gia' vissuto

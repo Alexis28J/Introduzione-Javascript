@@ -211,8 +211,8 @@
 
 //Nulla ci vieta di scrivere un ciclo dentro un'altro ciclo
 
-for (let i = 0; i < 5; i++) {    //stamperà da 0 fino a 4 
-    for (let j = 0; j < 5; j++) {  //si mette j perchè viene dopo di i ma in realtà è solo un nome --  si può usare x,ecc
-    console.log("riga: " + j + "colonna: " + i);
-    }
-}
+// for (let i = 0; i < 5; i++) {    //stamperà da 0 fino a 4 
+//     for (let j = 0; j < 5; j++) {  //si mette j perchè viene dopo di i ma in realtà è solo un nome --  si può usare x,ecc
+//     console.log("riga: " + j + "colonna: " + i);
+//     }
+// }
