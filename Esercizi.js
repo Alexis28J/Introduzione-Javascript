@@ -99,22 +99,27 @@
 
 //6) fai un ciclo for che stampi il quadrato dei numeri da 1 a 100 
 
+// col ciclo for:
+
 // for (let i = 1; i <= 100; i++) {   //o scrivere < 101
 //    const square = i ** 2;
 //    console.log(square);
 // }
 
-// ora lo facciamo con while
+
+// col ciclo while:
 
 // let numberOne = 1;
-
 // while (numberOne < 101) {
 //     console.log(numberOne ** 2);
-//     numberOne++;
+//     numberOne++;   }
+
 
 
 //7) fai un ciclo che per i numeri di 1 al 100 stampi pari se il numero è pari e dispari se il numero è dispari
 
+
+// Col ciclo for:
 // for (let i = 1; i < 101 ; i++) {
 
 //    if (i % 2 === 0) {
@@ -128,6 +133,20 @@
 // }
 
 
+// Col ciclo while: 
+// let numberX = 1; 
+ 
+// while (numberX < 101) {
+//    if (numberX % 2 === 0) {
+//     console.log("Pari");
+//     numberX++;
+//    }else{
+//     console.log("Dispari");
+//     numberX++;
+//    }
+// }
+
+
 // COMPITI 
 
 //8) Usando un ciclo logga i numeri da 1 a 100 mettendo un asterisco vicino ai multipli di 7
@@ -135,3 +154,74 @@
 //10) chiedi all'utente un numero (positivo) di partenza e poi logga tutti i numeri dal numero dato fino a 0
 //11) chiedi all'utente due numeri e logga tutti i numeri pari compresi tra i numeri forniti dall'utente
 //12) chiedi all'utente quanti anni ha e digli quante ore ha gia' vissuto
+
+
+//8) 
+
+// COL CICLO FOR:
+// for (let i = 1; i <=100 ; i++) {
+//     if (i % 7 === 0) {  
+//         //I multipli di un numero sono ottenuti moltiplicando quel numero per un qualsiasi numero intero. Un numero è considerato un multiplo di 7 se è divisibile per 7, ovvero se il resto della divisione per 7 è 0.
+//         console.log(i + "*");
+//     }else{
+//         console.log(i);
+//     }
+// }
+
+
+//COL CICLO WHILE:
+// let numberX = 1;
+
+// while (numberX <= 100) {
+//     if (numberX % 7 === 0) {
+//         console.log(numberX + "*");
+//         numberX++;
+//     }else{
+//         console.log(numberX);
+//         numberX++;
+//         }
+// }
+
+
+
+//9) 
+
+//Un quadrato perfetto è un numero intero che può essere espresso come il prodotto di un numero intero moltiplicato per se stesso.
+//Per verificare se un numero è un quadrato perfetto in JavaScript, si può calcolare la sua radice quadrata usando Math.sqrt() e poi controllare se il risultato è un numero intero.
+
+//CICLO FOR:
+// for (let i = 1; i < 101; i++) {
+//     const squareRoot = Math.sqrt(i);  // squareRoot è la radice quadrata di i e perciò deve essere un numero intero
+//     if (squareRoot % 1 === 0) {     // se la radice quadrata è un numero intero allora il resto che si ottiene quando diviso da 1 deve essere 0, al contrario di quello che succede coi numeri decimali.
+//         console.log(i + "*");
+//     } else {
+//         console.log(i);
+//     }
+// }
+
+//COL CICLO WHILE NON MI VIENE!!!
+// let numberOne = 1;
+// let numberTwo = Math.sqrt(numberOne);   // numberTwo è la radice quadrata di numberOne e perciò deve essere un numero intero
+// while (numberOne < 101) {
+//        if (numberTwo > 0, numberTwo % 1 === 0) {
+//         console.log(numberOne + "*");
+//         numberOne++;
+//        } else {
+//         console.log(numberOne);
+//         numberOne++;
+//        }
+// }
+
+//10) 
+
+const numberX = Number(prompt("Inserisca un numero"));
+
+if (numberX > 0) {
+    while (numberX >= 0){
+        console.log(numberX); 
+        numberX--; }
+} 
+
+else if (numberX < 0) {
+    console.log(prompt("Non ammesso. Il numero deve essere positivo"));
+}
