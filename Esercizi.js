@@ -212,16 +212,125 @@
 //        }
 // }
 
+
 //10) 
 
-const numberX = Number(prompt("Inserisca un numero"));
+// for (let i = prompt("Inserisca un numero"); i > 0; i--) {
+//    console.log(i); 
+// }
 
-if (numberX > 0) {
-    while (numberX >= 0){
-        console.log(numberX); 
-        numberX--; }
-} 
 
-else if (numberX < 0) {
-    console.log(prompt("Non ammesso. Il numero deve essere positivo"));
-}
+//11)
+
+// NON VA!
+// for (let i = prompt("Inserisca un numero"); i > 0; i--) {
+//     for (let j = prompt("Inserisca un altro numero"); j < i; j++) {
+//          if (i % 2 === 0, j % 2 === 0) {
+//             console.log(i, j);
+//                   }
+// }
+// }
+
+// NON VA!
+// let i = prompt("Inserisca un numero");
+// let j = prompt("Inserisca un altro numero");
+
+// if (i % 2 === 0, j % 2 === 0) {
+//                console.log(i, j);
+               
+// } else {
+//                console.log();
+            
+// }
+
+// CORREZIONE IN CLASSE:
+
+// const number1 = prompt("Inserisci il primo numero");
+// const convertedNumber1 = Number(number1);
+
+// const number2 = prompt("Inserisci il secondo numero")
+// const convertedNumber2 = Number(number2);
+
+// for (let i = convertedNumber1 ; i <= covertedNumber2; i++) {
+//     console.log(i);
+    
+// } //NON FUNZIONA IN TUTTI I CASI MA PER ORA NON IMPORTA 
+
+
+//12)
+
+// let age = Number(prompt("Quanti anni hai?"))
+
+// const hours = age * 365 * 24;
+
+// console.log("Hai sprecato" + hours + " ore");
+
+
+
+
+
+// ESERCIZI DEL LIBRO
+
+//1) Looping a triangle
+//Write a loop that makes seven calls to console.log to output the following triangle:
+//TRADUZIONE: Ciclo di un triangolo. Scrivi un ciclo che esegua sette chiamate a console.log per generare il seguente triangolo:
+
+// #
+// ##
+// ###
+// ####
+// #####
+// ######
+// #######
+
+//It may be useful to know that you can find the length of a string by writing .length after it.
+//TRADUZIONE: Potrebbe essere utile sapere che è possibile trovare la lunghezza di una stringa scrivendo .length dopo di essa.
+
+// let abc = "abc";
+// console.log(abc.length);
+// // → 3
+
+
+//Most exercises contain a piece of code that you can modify to solve the exercise. Remember that you can click code blocks to edit them.
+//TRADUZIONE: La maggior parte degli esercizi contiene un frammento di codice che puoi modificare per risolverli. Ricorda che puoi cliccare sui blocchi di codice per modificarli.
+
+//VEDI REPOSITORY (SINCRONIZZARE FORK) DEL PROF MA PROVARE A FARLO PRIMA.
+
+
+
+//2) FizzBuzz
+// (PRIMO STEP) Write a program that uses console.log to print all the numbers from 1 to 100, with two exceptions. For numbers divisible by 3, print "Fizz" instead of the number, and for numbers divisible by 5 (and not 3), print "Buzz" instead.
+// TRADUZIONE: Scrivi un programma che utilizzi console.log per stampare tutti i numeri da 1 a 100, con due eccezioni. Per i numeri divisibili per 3, stampa "Fizz" al posto del numero, e per i numeri divisibili per 5 (e non per 3), stampa "Buzz".
+
+// (SECONDO STEP) When you have that working, modify your program to print "FizzBuzz" for numbers that are divisible by both 3 and 5 (and still print "Fizz" or "Buzz" for numbers divisible by only one of those).
+//TRADUZIONE: Una volta che tutto funziona, modifica il tuo programma in modo che stampi "FizzBuzz" per i numeri divisibili sia per 3 che per 5 (e stampi comunque "Fizz" o "Buzz" per i numeri divisibili solo per uno di questi).
+
+// (This is actually an interview question that has been claimed to weed out a significant percentage of programmer candidates. So if you solved it, your labor market value just went up.)
+// TRADUZIONE: (In realtà, si dice che questa sia una domanda da colloquio che elimina una percentuale significativa di candidati programmatori. Quindi, se hai risposto correttamente, il tuo valore sul mercato del lavoro è appena aumentato.)
+
+
+// IL PROBLEMA è DIVISO IN DUE STEP. //CONSIGLI: CONTROLLARE L'ORDINE DELLE ISTRUZIONI PERCHE' IL PROGRAMMA FUNZIONI CORRETTAMENTE. PUOI USARE && PER UNIRE 2 CONDIZIONI.
+// VEDI REPOSITORY (SINCRONIZZARE FORK) DEL PROF MA PROVARE A FARLO PRIMA. IL PROF LO HA FATTO IN 3 MANIERE DIVERSE: FACILE, MEDIO E DIFFICILE (VA BENE QUALSIASI DEI 3).
+
+
+
+//3) ChessBoard 
+//PRIMO STEP: Write a program that creates a string that represents an 8×8 grid, using newline characters to separate lines. At each position of the grid there is either a space or a "#" character. The characters should form a chessboard.
+//Passing this string to console.log should show something like this:
+//TRADUZIONE: Scrivi un programma che crei una stringa che rappresenti una griglia 8×8, utilizzando caratteri di nuova riga per separare le righe. In ogni posizione della griglia è presente uno spazio o un carattere "#". I caratteri dovrebbero formare una scacchiera.
+//Passando questa stringa a console.log dovrebbe apparire qualcosa di simile a questo:
+
+
+//  # # # #               //QUESTO è UNA GRIGLIA 8X8  ->  4 SPAZI CON CANCELLETTO E 4 SPAZI VUOTI    // LINEA0: SE SI OSSERVA BENE LA RIGA PARTE DA ZERO (SPAZIO VUOTO)
+// # # # #                //LINEA 1 PARTE DA UNO (SPAZIO CON CANCELLETTO) E COSì VIA   // ALLORA DIVIAMOLI IN LINEE PARI E DISPARI
+//  # # # #
+// # # # # 
+//  # # # #
+// # # # # 
+//  # # # #
+// # # # #
+
+//SECONDO STEP: When you have a program that generates this pattern, define a binding size = 8 and change the program so that it works for any size, outputting a grid of the given width and height.
+//TRADUZIONE: Quando si dispone di un programma che genera questo modello, definire una dimensione di binding = 8 e modificare il programma in modo che funzioni per qualsiasi dimensione, producendo una griglia con la larghezza e l'altezza specificate.
+
+// VEDI REPOSITORY (SINCRONIZZARE FORK) DEL PROF MA PROVARE A FARLO PRIMA. IL PROF LO HA FATTO IN 4 MANIERE DIVERSE: FACILE, MEDIO, DIFFICILE E DIFFICILE CON MENO IF (VA BENE QUALSIASI DEI 4).
