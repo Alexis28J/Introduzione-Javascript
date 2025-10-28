@@ -308,7 +308,13 @@
 //     return fahrenheit;
 // }
 
-
-
 // console.log(convertiGradi(5) + '°F') ;
+
+
+//30) Verifica password
+//Scrivi una funzione verificaPassword che prenda una stringa e restituisca true se:
+// - Ha almeno 8 caratteri
+// - Contiene almeno una lettera maiuscola
+// - Contiene almeno un carattere speciale tra questi '!#@$%'
+// - Non contiene la parola 'cacca'
 
