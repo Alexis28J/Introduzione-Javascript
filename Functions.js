@@ -217,13 +217,18 @@ console.log('Finalmente le FUNZIONI!!');
 //          } 
 // }
 
+
+//console.log(biggerNumber(7, 8));  // un modo più diretto per loggare
+
 // const pippo = biggerNumber(7, 8);
 // console.log(pippo);
 
 // const pluto = biggerNumber(17, 5);
 // console.log(pluto);
 
-
+// function biggerNumberShort(n1,n2){     // versione più diretta e condensata di una funzione classica MA più difficile da capire al lettore. NON è obbligatorio farlo!
+//     return n1 > n2 ? n1 : n2;
+// }
 
 // LAMBDA
 
@@ -240,6 +245,9 @@ console.log('Finalmente le FUNZIONI!!');
 
 // const paperone = biggerNumberLambda (-60, -5);
 // console.log(paperone);
+
+
+//const biggerNumberLambdaShort = (n1, n2) => n1 > n2? n2 : n1;  // versione più diretta e condensata di una funzione Lambda MA più difficile da capire al lettore. NON è obbligatorio farlo!
 
 
 //5) Scrivere una funzione che date in input due stringhe ritorni la più corta
@@ -346,7 +354,7 @@ console.log('Finalmente le FUNZIONI!!');
 //    let multipliedWord = ' ';                // Inizializzo una stringa vuota per contenere il risultato
 
 //    for (let i = 0; i < multiplier; i++) {   // faccio un ciclo 
-//       multipliedWord += inputWord + '\n';   // \n è una sequenza di escape che rappresenta un carattere di nuova riga (andare a capo) all'interno di una stringa e deve essere tra virgolette perché considerata una stringa. Se lo scrivo senza le virgolette, Javascript me lo segna come errore// multipliedWord = multipliedWord + inputword + '\n'
+//       multipliedWord += inputWord + '\n';   // \n è una sequenza di escape (carattere di scape) che rappresenta un carattere di nuova riga (andare a capo) all'interno di una stringa e deve essere tra virgolette perché considerata una stringa. Se lo scrivo senza le virgolette, Javascript me lo segna come errore// multipliedWord = multipliedWord + inputword + '\n'
 //    }
 //    return multipliedWord;
 // }
@@ -360,13 +368,14 @@ console.log('Finalmente le FUNZIONI!!');
 
 //LAMBDA   //  NON VA A CAPO!
 
-let multiplyWordLambda = (inputWord, multiplier) => inputWord.repeat(multiplier) + '\n';
+// let multiplyWordLambda = (inputWord, multiplier) => inputWord.repeat(multiplier) + '\n';
 
-let m3 = multiplyWordLambda('testa', 6);
-console.log(m3);
 
-let m4 = multiplyWordLambda('occhio', 10);
-console.log(m4);
+// let m3 = multiplyWordLambda('testa', 6);
+// console.log(m3);
+
+// let m4 = multiplyWordLambda('occhio', 10);
+// console.log(m4);
 
 
 //    {
