@@ -60,53 +60,255 @@
 
 //CLOJURE
 //le funzioni mantengono in vita le variabili che usano anche al di fuori del loro scope
-const isOpen = true;
+// const isOpen = true;
 
-let myFunction;   //variabile vuota che conterrà la mia funzione
+// let myFunction;   //variabile vuota che conterrà la mia funzione
 
-if (isOpen) {
-    let counter = 0;
+// if (isOpen) {
+//     let counter = 0;
 
-    myFunction = () => {  //()senza parametri d'ingresso
-        counter++;
-        console.log(counter);
-    }
+//     myFunction = () => {  //()senza parametri d'ingresso
+//         counter++;
+//         console.log(counter);
+//     }
 
-    // myFunction(); //aumenta di 1 ogni volta che chiamo la funzione
-    // myFunction();
-    // myFunction();
-    // myFunction(); //a questo punto ho 4 //non c'è limite di quantità di volte che posso chiamare
-}
+//     // myFunction(); //aumenta di 1 ogni volta che chiamo la funzione
+//     // myFunction();
+//     // myFunction();
+//     // myFunction(); //a questo punto ho 4 //non c'è limite di quantità di volte che posso chiamare
+// }
 
 
-myFunction();  //se li porto fuori dello scoope del 'papà', funzione comunque perchè la funzione rimane 'viva' - questo si chiama Clojure
-myFunction();
-myFunction();
-myFunction();
+// myFunction();  //se li porto fuori dello scoope del 'papà', funzione comunque perchè la funzione rimane 'viva' - questo si chiama Clojure
+// myFunction();
+// myFunction();
+// myFunction();
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//RECURSIONI
+//RECURSIONI    //li posso usare finchè rimane in un numero ragionevole, la ricursione eccessiva può saturare (e lo farà) la memoria dello stack
 //Fattoriale:
 //fact(0)=1;
 //fact(1)=1;
 //fact(n)=n*fact(n-1);
 
-function fact(n) {
-    if (n === 0) {
-        return 1;
-    }else{
-        return n * fact(n-1);
-    }
-}
+// function fact(n) {
+//     if (n === 0) {
+//         return 1;
+//     }else{
+//         return n * fact(n-1);
+//     }
+// }
 
-console.log(fact(0));
-console.log(fact(1));
-console.log(fact(2));
-console.log(fact(3));
-console.log(fact(4));
-console.log(fact(5));
-console.log(fact(6));
-console.log(fact(7));
+// console.log(fact(0));
+// console.log(fact(1));
+// console.log(fact(2));
+// console.log(fact(3));
+// console.log(fact(4));
+// console.log(fact(5));
+// console.log(fact(6));
+// console.log(fact(7));
+
+
+
+// function isEven(n) {   //is Even = è pari. Funzione per sapere se un numero è pari --  questa funzione non funziona con numeri negativi
+//     if (n === 0) {
+//         return true;
+//     }else if (n === 1){
+//         return false; 
+//     }else{
+//         return isEven(n-2); // col parametro 5, arriva fino a return isEven(5-2) allora riparte da capo come n=3 e così via fino a che mi dia risultato true o false
+//     }
+// }
+
+// console.log(isEven(5));
+// console.log(isEven(4));
+// console.log(isEven(3));
+
+
+
+// function isEven(n) { 
+//     if (n === 0) {   
+//         return true;
+//     } else {
+//         return isOdd(n-1)
+//     }
+// }
+
+// function isOdd(n) {   //Funzione per sapere se un numero è dispari
+//     if (n === 0) {     
+//         return false;  
+//     } else {
+//         return isEven(n-1);
+//     }
+// }
+
+// console.log(isEven(3));
+// console.log(isOdd(3));
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+//TASK
+//1) se ci sono, rimuovere gli spazi prima e dopo
+//2) aggiungere la stringa pippo in fondo
+//3) mettere tutto maiusculo
+//4) ripeterla per il numero di volte del moltiplicatore
+//5) aggiungerli in fondo la sua lunghezza
+//6) rimuovere tutte le p
+
+// function strangeStringFunction(str, multiplier) {
+    
+//     const strWithoutSpaces = str.trim();   // funzione .trim() toglie lo spazio in mezzo alla stringa (1)
+//     console.log('senza spazi', strWithoutSpaces);  //così controllo che ogni task che ho fatto funzioni bene
+
+//     const strWithPippo = strWithoutSpaces + 'pippo';  // per aggiungere pippo in fondo (2)
+//     console.log('aggiunto pippo', strWithPippo);
+    
+//     const strUpper = strWithPippo.toUpperCase();  //funzione .toUpperCase() per mettere tutto in maiuscola (3)
+//     console.log('maiuscola', strUpper);
+
+//     const strMultiplied = strUpper.repeat(multiplier);
+//     console.log('moltiplicata->', strMultiplied);
+    
+//     const strWithLength = strMultiplied + strMultiplied.length;
+//     console.log('con lunghezza->', strWithLength);
+    
+    
+// let strWithoutP = '';                              //(6)
+
+// for (let i = 0; i < strWithLength; i++) {
+//     const char = strWithLength.charAt(i);
+
+//     if(char !== 'P'){
+//         strWithoutP += char;
+//     }
+    
+// }
+
+// console.log('senza p->', strWithoutP);
+
+// }
+
+// strangeStringFunction(' leonardo bullo! ', 4);
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+//Esercizio per casa: libro "Eloquent Javascript" - capitolo 3 Functions
+
+// Bean counting
+
+// You can get the Nth character, or letter, from a string by writing [N] after the string (for example, string[2]). The resulting value will be a string containing only one character (for example, "b"). The first character has position 0, which causes the last one to be found at position string.length - 1. In other words, a two-character string has length 2, and its characters have positions 0 and 1.
+
+// Write a function called countBs that takes a string as its only argument and returns a number that indicates how many uppercase B characters there are in the string.
+
+// Next, write a function called countChar that behaves like countBs, except it takes a second argument that indicates the character that is to be counted (rather than counting only uppercase B characters). Rewrite countBs to make use of this new function.
+
+
+//TRADUZIONE
+
+//Conteggio dei fagioli
+
+// È possibile ottenere l'ennesimo carattere, o lettera, da una stringa scrivendo [N] dopo la stringa (ad esempio, string[2]). Il valore risultante sarà una stringa contenente un solo carattere (ad esempio, "b"). Il primo carattere ha posizione 0, il che fa sì che l'ultimo si trovi alla posizione string.length - 1. In altre parole, una stringa di due caratteri ha lunghezza 2 e i suoi caratteri hanno posizioni 0 e 1.
+
+// Scrivi una funzione chiamata countBs che accetti una stringa come unico argomento e restituisca un numero che indica quanti caratteri B maiuscoli sono presenti nella stringa.
+
+// Successivamente, scrivi una funzione chiamata countChar che si comporti come countBs, tranne per il fatto che accetta un secondo argomento che indica il carattere da contare (invece di contare solo i caratteri B maiuscoli). Riscrivi countBs per utilizzare questa nuova funzione.
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Esercizi in clase
+
+//24) Inversione di un numero
+//Scrivi una funzione invertiNumero che prenda un numero come parametro e restituisca il numero con le cifre invertite (es. 123 → 321).
+
+// function changeCharOrder(n) {
+//     let toChange = n.toString().split('').reverse().join('');
+//     return toChange;
+// }
+
+// console.log(changeCharOrder(598));
+
+
+
+//25) Tabellina
+//Scrivi una funzione tabellina che prenda un numero come parametro e stampi in console la tabellina di quel numero fino a 10.
+
+
+// function littleTab(n1) {
+
+
+// for (let i = 1; i <= 10; i++) {
+  
+//   const risultato = n1 * i;
+  
+//   console.log(n1 + 'x' + i + '=' + risultato);
+// }
+
+// }
+
+// console.log(littleTab(5));
+
+
+//26) Fibonacci
+//Scrivi una funzione fibonacci che prenda un numero N come parametro e restituisca l’N-esimo numero della sequenza di Fibonacci.
+
+
+//27)  Conteggio vocali
+//Scrivi una funzione contaVocali che prenda una stringa come parametro e restituisca il numero di vocali presenti.
+
+
+// function contaVocali(str) {
+//     let counter = 0;
+//     const vowel = 'aeiouAEIOU';
+//     for (let i = 0; i < str.length; i++) {
+//         if (vowel.includes(str[i])) {
+//             counter++;
+//         }
+        
+//     }
+//     return counter;
+// }
+
+
+// console.log(contaVocali('meleebanane'));
+
+
+
+//28) Sconto
+//Scrivi una funzione applicaSconto che prenda due numeri come parametri (prezzo e percentuale di sconto) e restituisca il prezzo scontato.
+
+
+// function applicaSconto(price, percentage) {
+//     let percentageFloat = percentage / 100;
+//     let discount = price * percentageFloat;
+//     let result = price - discount;
+//     return result;
+// }
+
+
+// console.log(applicaSconto(100, 5));
+
+
+
+//29) Conversione gradi
+//Scrivi una funzione convertiGradi che prenda un numero come parametro (gradi Celsius) e restituisca la conversione in Fahrenheit
+
+ 	
+//(5 °C × 9/5) + 32 = 41 °F
+
+// function convertiGradi(c) {
+//     let fahrenheit = (c * (9/5)) + 32;
+//     return fahrenheit;
+// }
+
+
+
+// console.log(convertiGradi(5) + '°F') ;
+
