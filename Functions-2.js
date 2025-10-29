@@ -219,12 +219,16 @@
 
 // Successivamente, scrivi una funzione chiamata countChar che si comporti come countBs, tranne per il fatto che accetta un secondo argomento che indica il carattere da contare (invece di contare solo i caratteri B maiuscoli). Riscrivi countBs per utilizzare questa nuova funzione.
 
+
+//In JavaScript, string[n] significa accedere al carattere che si trova alla posizione n della stringa, dove la prima posizione è 0. Questo metodo è noto come indicizzazione di stringa ed è un modo comune per estrarre singoli caratteri da una stringa.
+
 //Fatto da Selma
 
 // function countBs(str) {
 //     let counter = 0;
 
-//     for (let i = 0; i < str.length; i++) {  //ricorda che si comincia a contare da ZERO non da uno
+//     for (let i = 0; i < str.length; i++) {  //'let i=0': ricorda che si comincia a contare da ZERO non da uno 
+//         //'i < str.length': il contatore si ferma dopo aver contato tutte i caratteri della string che gli abbiamo dato
 //         const selectedChar = str[i];
 //         const lowerChar = selectedChar.toLowerCase(); //funzione .toLowerCase() per trasformare le lettere maiscole in minuscole perché altrimenti la nostra funzione non lo considera 
 
@@ -265,9 +269,12 @@
 
 
 
-//TASK AGGIUNTIVO - is Sensitive
+//TASK AGGIUNTIVO - is Sensitive (se voglio che si distingua se il carattere è maiuscolo e minuscolo)
+//In JavaScript, "case sensitive" significa che il linguaggio distingue tra lettere maiuscole e minuscole nei nomi di variabili, funzioni e altre istruzioni.
+//Perciò, se il codice ha un errore di battitura, anche solo cambiando la capitalizzazione, l'esecuzione non avverrà correttamente.
 
-// function countCharSensitive(str, char, isSensitive) {
+
+// function countCharSensitive(str, char, isSensitive) {   
 
 //     let counter = 0;
 
@@ -573,35 +580,115 @@ function fiboRecursive(pos) {
 
 //fatto dal Prof.
 
+// function checkPasword(password) {
+//     if (password.length > 8) {  //la password deve almeno avere 8 caratteri
+//         return false;
+//     } else {
+//         if (password.toLowerCase() === password) {
+//             return false;  //la password deve avere almeno UNA lettera maiuscola
+//         } else {
+//             if (password.includes("!")   //la password deve avero almeno UNO di questi caratteri speciali
+//                 || password.includes('#')
+//                 || password.includes('@')
+//                 || password.includes('$')
+//                 || password.includes('%')) {
 
-function checkPasword(password) {
-    if (password.length > 8) {  //la password deve almeno avere 8 caratteri
+//                 if (password.includes('cacca')) {  //la password NON deve includere la parola 'cacca'
+//                     return false;
+//                 } else {
+//                     return true;
+//                 }
+//             } else {
+//                 return false;
+//             }
+//         }
+//     }
+
+// }
+
+
+
+// console.log(checkPasword('caccacaccacacca'));
+// console.log(checkPasword('leonardo'));
+
+
+
+//COME POSSIAMO MIGLIORARE IL NOSTRO CODICE? FACCIAMO UN 'REFACTOR'
+
+
+function checkSpecialCharacters(str) {
+    if (str.includes("!")   //la password deve avero almeno UNO di questi caratteri speciali
+                || str.includes('#')
+                || str.includes('@')
+                || str.includes('$')
+                || str.includes('%')) {
+                       return true;
+    }else{
         return false;
-    } else {
-        if (password.toLowerCase() === password) {
-            return false;  //la password deve avere almeno UNA lettera maiuscola
-        } else {
-            if (password.includes("!")   //la password deve avero almeno UNO di questi caratteri speciali
-                || password.includes('#')
-                || password.includes('@')
-                || password.includes('$')
-                || password.includes('%')) {
-
-                if (password.includes('cacca')) {  //la password NON deve includere la parola 'cacca'
-                    return false;
-                } else {
-                    return true;
-                }
-            } else {
-                return false;
-            }
-        }
     }
-
 }
 
 
+function containUppercaseChar(str) {
+    if (str.toLowerCase() === str) {
+        return false;
+    }else{
+        return true;
+    }
+}
+
+
+function isTooShort(str) {
+    if (str.length < 8) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+function containsCacca(str) {
+    if (str.includes('cacca')) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+function checkPasword(password) {
+    // if (password.length > 8) {  //la password deve almeno avere 8 caratteri
+    //     return false;
+    // } else {
+    //     if (password.toLowerCase() === password) {
+    //         return false;  //la password deve avere almeno UNA lettera maiuscola
+    //     } else {
+    //         if (checkSpecialCharacters(password)) {
+    //             if (password.includes('cacca')) {  //la password NON deve includere la parola 'cacca'
+    //                 return false;
+    //             } else {
+    //                 return true;
+    //             }
+    //         } else {
+    //             return false;
+    //         }
+    //     }
+    // }
+
+if (isTooShort(password)) {
+    return false;
+}else if(!containUppercaseChar(password)){
+    return false;
+}else if(!checkSpecialCharacters(password)){  //'altrimenti: non ha caratteri speciali allora ritorna falso'
+    return false;
+}else if(containsCacca(password)){
+    return false;
+}else{
+    return true;
+}
+    
+}
+
 
 console.log(checkPasword('caccacaccacacca'));
-console.log(checkPasword('leonardo'));
-
+console.log(checkPasword('Leonardo!'));
