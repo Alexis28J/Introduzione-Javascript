@@ -616,47 +616,47 @@ function fiboRecursive(pos) {
 //COME POSSIAMO MIGLIORARE IL NOSTRO CODICE? FACCIAMO UN 'REFACTOR'
 
 
-function checkSpecialCharacters(str) {
-    if (str.includes("!")   //la password deve avero almeno UNO di questi caratteri speciali
-                || str.includes('#')
-                || str.includes('@')
-                || str.includes('$')
-                || str.includes('%')) {
-                       return true;
-    }else{
-        return false;
-    }
-}
+// function checkSpecialCharacters(str) {
+//     if (str.includes("!")   //la password deve avero almeno UNO di questi caratteri speciali
+//                 || str.includes('#')
+//                 || str.includes('@')
+//                 || str.includes('$')
+//                 || str.includes('%')) {
+//                        return true;
+//     }else{
+//         return false;
+//     }
+// }
 
 
-function containUppercaseChar(str) {
-    if (str.toLowerCase() === str) {
-        return false;
-    }else{
-        return true;
-    }
-}
+// function containUppercaseChar(str) {
+//     if (str.toLowerCase() === str) {
+//         return false;
+//     }else{
+//         return true;
+//     }
+// }
 
 
-function isTooShort(str) {
-    if (str.length < 8) {
-        return true;
-    } else {
-        return false;
-    }
-}
+// function isTooShort(str) {
+//     if (str.length < 8) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
 
 
-function containsCacca(str) {
-    if (str.includes('cacca')) {
-        return true;
-    } else {
-        return false;
-    }
-}
+// function containsCacca(str) {
+//     if (str.includes('cacca')) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
 
 
-function checkPasword(password) {
+//function checkPasword(password) {
     // if (password.length > 8) {  //la password deve almeno avere 8 caratteri
     //     return false;
     // } else {
@@ -675,20 +675,20 @@ function checkPasword(password) {
     //     }
     // }
 
-if (isTooShort(password)) {
-    return false;
-}else if(!containUppercaseChar(password)){
-    return false;
-}else if(!checkSpecialCharacters(password)){  //'altrimenti: non ha caratteri speciali allora ritorna falso'
-    return false;
-}else if(containsCacca(password)){
-    return false;
-}else{
-    return true;
-}
+// if (isTooShort(password)) {
+//     return false;
+// }else if(!containUppercaseChar(password)){
+//     return false;
+// }else if(!checkSpecialCharacters(password)){  //'altrimenti: non ha caratteri speciali allora ritorna falso'
+//     return false;
+// }else if(containsCacca(password)){
+//     return false;
+// }else{
+//     return true;
+// }
     
-}
+// }
 
 
-console.log(checkPasword('caccacaccacacca'));
-console.log(checkPasword('Leonardo!'));
+// console.log(checkPasword('caccacaccacacca'));
+// console.log(checkPasword('Leonardo!'));
