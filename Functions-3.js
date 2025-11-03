@@ -21,6 +21,22 @@
 // console.log(sommaFinoANLambda(100));
 
 
+
+//FATTO DAL PROF.
+
+// function sommaFinoAN(nbr) {
+//     let counter = 0;
+
+//     for (let i = 0; i <= nbr ; i++) {
+//         sum = sum + i;
+//     }
+//     return nbr;
+// }
+
+// console.log(sommaFinoAN(5));
+// console.log(sommaFinoAN(50));
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -42,6 +58,19 @@
 // console.log(contaCifre(113));  // SE NON LO METTO COME STRINGA MI LOGGA COME UNDEFINED!
 // console.log(contaCifre('1000')); //HO CERCATO DI RICONVERTIRLO A NUMERO MA NON FUNZIONA LO STESSO
 // USARE LA FORMA LAMBDA NON CI CONSENTIREBBE DI ACCORCCIARLA PIù DI COSì SECONDO ME
+
+
+// FATTO DAL PROF.
+
+// function contaCifre(nbr) { 
+//     const nbrToString = string(nbr);   
+//     const length = nbrToString.length;  
+//     return length;
+// }
+
+// console.log(contaCifre(5)); // ->1
+// console.log(contaCifre(1245)); // ->4
+
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,6 +100,31 @@
 // console.log(sommaCifre(45));
 // console.log(sommaCifre(684));
 // console.log(sommaCifre(9756));
+
+
+// FATTO DAL PROF.
+
+// function sommaCifre(nbr) {
+//     //1245
+//     debugger;  //non centra con l'esercizio ma è un tool utile per vedere il funzionamento passo a passo sul browser
+//     let nbrToString = String(nbr); //converte il numero in stringa
+//     //'1245'
+//     let sum = 0;
+
+//     for (let i = 0; i < nbrToString.length; i++) { //gira tante volte la lunghezza dello string
+//         //4
+//         const numberChar = nbrToString[i];  // le [] indicano il numero di carattere di una stringa
+//         //'1'                   //0 (primo giro)  //1 (secondo giro)
+//         const n = Number(numberChar);
+//         //1
+//         sum = sum + n;
+//         //1   //0   //1 (primo giro)    //3   //1   //2  (secondo giro)     // 12   //7   //5 (quarto e ultimo giro)
+//     }
+//     return sum;
+//     //12
+// }
+
+// console.log(sommaCifre(1245));
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -103,6 +157,18 @@
 // console.log(euroToDollaroLambda(-43));
 
 
+//FATTO DAL PROF.
+
+//(1 euro = 1.15 dollari)
+
+// function euroToDollar(euro) {
+//     const dollaro = euro * 1.15;
+//     return dollaro;
+// }
+
+// console.log(euroToDollar(5));
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -116,6 +182,20 @@
 // console.log(areOfRectangle(28, 15));
 
 
+// FATTO DAL PROF.
+
+
+// function calcolaAreaRettangolo(base, altezza) {
+//     const area = base * altezza;
+
+//     return area;
+// }
+
+// console.log(calcolaAreaRettangolo(5, 20));
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // 36) Calcolo media
@@ -127,7 +207,16 @@
 // console.log(average(9, 10, 5));
 
 
+// FATTO DAL PROF.
 
+// function media(a, b, c) {
+//     const sum = a + b + c;
+//     const mean = sum / 3;
+//     return mean;
+// }
+
+
+// console.log(media(5, 20, 11));
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -142,7 +231,7 @@
 
 
 // function generateRandomPass(str) {      // se non inserisco un parametro, la funzione NON parte
-//     const character = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';   // come è stato chiesto nel problemo, ho dichiarato solo lettere maiuscole e numeri.
+//     const character = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';   // come è stato chiesto nel problema, ho dichiarato solo lettere maiuscole e numeri.
 //     let pass = ' ';
 
 //     for (let i = 0; i < str; i++) {  // il ciclo continua a generare un carattere fino a soddisfare il numero del parametro (str) inserito.
@@ -163,8 +252,35 @@
 
 
 
+// FATTO DAL PROF.
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// function generaPasswordCasuale() {  // NON UTILIZZA NESSUN PARAMETRO
+
+//     const availableCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';   // caratteri che POSSO usare
+//                                //012345678..... - posizioni della stringa
+
+//     let password = '';
+
+//     for (let i = 0; i < 8; i++) {
+
+//         const numeroRandomico = Math.random();  // numero casuale
+
+//         const position = numeroRandomico * (availableCharacters.length - 1);  // per scegliere una posizione moltiplica un numero random per la lunghezza di availableCharacters - 1    // se avesse messo Math.floor non sarebbe necessario -1
+
+//         const roundedPosition = Math.round(position);  // Math.round fa lo stesso che Math.floor solo che arrotonda verso il basso o verso l'alto a seconda del numero della virgola è sotto o sopra il 0.5
+
+//         password = password + availableCharacters[roundedPosition];  
+
+
+//     }
+//     return password;
+// }
+
+// console.log(generaPasswordCasuale());
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 38) Potenza con ciclo
 // Scrivi una funzione potenzaCiclo(base, esponente) che calcola la potenza usando un ciclo.
 
@@ -192,7 +308,42 @@
 // console.log(powerCycle(5, 2));
 
 
+// FATTO DAL PROF.
 
+// IL PROF. NON HA CONSIDERATO I NUMERI NEGATIVI PER QUESTE FUNZIONI
+
+// function potenzaCiclo(base, esponente) {
+
+// if (esponente === 0) {   
+//     return 1;
+// }
+
+//     let pow = 1;
+
+//     for (let i = 0; i < esponente; i++) {
+//         pow = pow * base;
+//     }
+//     return pow;
+// }
+
+// console.log(potenzaCiclo(2, 5));
+
+
+// VERSIONE UN PO' PIù VELOCE
+
+// function potenzaCiclo(base, esponente) {
+
+//    if (esponente === 0) {
+//        return 1;
+//    }
+
+//     for (let i = 1; i < esponente; i++) {
+//         pow = pow * base;
+//     }
+//     return pow;
+// }
+
+// console.log(potenzaCiclo(2, 5));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -227,6 +378,88 @@
 // console.log(emailValidator('invalid-email.'));
 
 
+// FATTO DAL PROF.
+
+// // facciamo una funzione che condizioni l'inclusione della chicciola
+// function constainsAt(email) {   // prima condizione
+//     if (email.includes('@')) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
+
+// //facciamo altra funzione per soddisfare la seconda condizione
+// function containsDotAfterAt(email) {   // contiene punto dopo la chiocciola
+//     const dotPosition = email.indexOf('.');   // indexOf() restituisce la posizione della prima occorrenza di un valore specificato in una stringa.
+//     if (dotPosition === -1) {      // se il punto non esiste nella stringa, indexOf() restituisce -1. Perciò la condizione vuol dire se 'il punto non esiste allora è falsa'.
+//         return false;
+//     }
+//     const atPosition = email.indexOf('@');
+//     if (dotPosition > atPosition) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
+
+// // Funzione per soddisfare la terza condizione
+// function firstAndSecondPartlengthIsThreeOrMore(email) {
+//     const atPosition = email.indexOf('@');
+//     const firstPart = email.substring(0, atPosition);   // .substring () mi permette di tagliare la mia stringa dicendo la prima e l'ultima posizione  // .substring() non prende l'ultimo elemento
+
+//     const dotPosition = email.indexOf('.');
+//     const secondPart = email.substring(atPosition + 1, dotPosition);
+
+//     if (firstPart.length >= 3 && secondPart.length >= 3) {     // 3 è il numero minimo di lettere richiesto  //controllo se la lunghezza è maggiore o uguale a 3
+//         return true;
+//     } else {
+//         return false;
+//     }
+
+// }
+
+
+// // Funzione per soddisfare l'ultima condizione
+// function lastCharMustBeDifferentFromDot(email) {
+    
+//         const lastPosition = email.length - 1;  //come partiamo da zero mettiamo - 1
+//         const lastChar = email[lastPosition];
+
+//         if (lastChar === '.') {
+//             return false;
+//         } else {
+//             return true;
+//         }
+// }
+
+
+// // Funzione principale  // scritta in questo modo (separato) è più leggibile
+// function emailValidator(email) {
+//     if (!constainsAt(email)) {
+//         return false;
+//     } else if (!containsDotAfterAt(email)) {
+//         return false
+//     } else if (!firstAndSecondPartlengthIsThreeOrMore(email)) {
+//         return false;
+//     } else if (!lastCharMustBeDifferentFromDot(email)) {
+//         return false;
+//     } else {
+//         return true;
+//     }
+// }
+
+
+// console.log(emailValidator('ciaociao'));
+// console.log(emailValidator('ciao@ciao'));
+// console.log(emailValidator('ciao@ciao.'));
+// console.log(emailValidator('ci.ao@ciao'));
+// console.log(emailValidator('ciao@ci.ao'));
+// console.log(emailValidator('jordy88@gmail.com'));
+
+
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -240,25 +473,57 @@
 //u -> ufu
 
 
-function converterToFarfallino(str) {
+// function converterToFarfallino(str) {
 
-    const vowel = 'aeiouAEIOU';
-    // definisco una costante vowel (vocali) contenente tutte le vocali minuscole e maiuscole per facilitare il controllo.
+//     const vowel = 'aeiouAEIOU';
+//     // definisco una costante vowel (vocali) contenente tutte le vocali minuscole e maiuscole per facilitare il controllo.
 
-    let result = '';   // Inizializzo una stringa vuota che verrà utilizzata per costruire la stringa in farfallino.
+//     let result = '';   // Inizializzo una stringa vuota che verrà utilizzata per costruire la stringa in farfallino.
 
-    for (let i = 0; i < str.length; i++) {  // un ciclo che scorre ogni carattere della stringa di input.
-        const char = str[i];  // ottiene il carattere corrente.
-        result += char;  // result = result + char -> aggiunge il carattere corrente al risultato.
-        if (vowel.includes(char)) {  // controllo se il carattere corrente è una vocale.
-            result += 'f' + char;  // result = result + 'f' + char -> se è una vocale, aggiunge una "f" e aggiunge (ripete) la stessa vocale dopo di essa.
-        }
+//     for (let i = 0; i < str.length; i++) {  // un ciclo che scorre ogni carattere della stringa di input.
+//         const char = str[i];  // ottiene il carattere corrente.
+//         result += char;  // result = result + char -> aggiunge il carattere corrente al risultato.
+//         if (vowel.includes(char)) {  // controllo se il carattere corrente è una vocale.
+//             result += 'f' + char;  // result = result + 'f' + char -> se è una vocale, aggiunge una "f" e aggiunge (ripete) la stessa vocale dopo di essa.
+//         }
+//     }
+//     return result;  // restituisce la stringa completa tradotta in farfallino.
+// }
+
+// console.log(converterToFarfallino('ciao'));
+// console.log(converterToFarfallino('suola'));
+// console.log(converterToFarfallino('Albero'));
+
+
+
+// FATTO DAL PROF.
+
+function farfallinoTranslator(str) {
+    
+const vowels = 'aeiou';
+
+let farfallinoStr = '';
+
+for (let i = 0; i < str.length; i++) {
+    
+    const char = str[i];
+
+    if (vowels.includes(char.toLowerCase())) {
+        
+        farfallinoStr = farfallinoStr + char + 'f' + char;
+
+    } else {
+
+        farfallinoStr = farfallinoStr + char;
+
     }
-    return result;  // restituisce la stringa completa tradotta in farfallino.
+}
+return farfallinoStr;
 }
 
-console.log(converterToFarfallino('ciao'));
-console.log(converterToFarfallino('suola'));
-console.log(converterToFarfallino('Albero'));
+
+console.log(farfallinoTranslator('leonardo'));
+console.log(farfallinoTranslator('LEONARDO'));
+console.log(farfallinoTranslator('viva la pausa!!'));
 
 
