@@ -224,25 +224,83 @@ const pippo = [1, 2, 4, 56, 78, 11, -123, 3, -23, 2, 22, 4];
 
 //41) Creare una funzione che dato un array di numeri li eleva tutti al quadratto
 
-function squareArray(nbrArray) {
-    
-}
+// function squareArray(nbrArray) {
 
-console.log(squareArray('pippo'));  // mi aspetto -> [1, 4, 16, 3136, ...]
+//     const square = [];
 
+//     for (let i = 0; i < nbrArray.length; i++) {
+//         const element = nbrArray[i];
+//         const squaredElement = element ** 2;
+//         square.push(squaredElement);
+//     }
+//     return square;
+// }
+
+// console.log(squareArray(pippo));  // mi aspetto -> [1, 4, 16, 3136, ...]
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //42) Creare una funzione che dato un array di numeri li eleva al quadratto solo i numeri dispari
 
-function squareOddArray(nbrArray) {
-    
-}
+//const pippo = [1, 2, 4, 56, 78, 11, -123, 3, -23, 2, 22, 4];
 
-console.log(squareOddArray('pippo'));  // mi aspetto -> [1, 2, 4, 56, 78, 121, 15129, 9, 529, 2, 22, 4]
+//Un numero negativo dispari diviso per 2 darà sempre un resto di -1. Questo perché, per definizione, un numero dispari (sia esso positivo o negativo) non è divisibile esattamente per 2. 
+// La divisione di un numero negativo dispari per 2 risulterà sempre in un quoziente intero più un resto di -1.
+
+// function squareOddArray(nbrArray) {
+
+//     //debugger;
+
+//     const square = [];
+
+//     for (let i = 0; i < nbrArray.length; i++) {
+
+//         const element = nbrArray[i];
+
+//         if (nbrArray[i] % 2 === 1
+//           ||nbrArray[i] % 2 === -1) {
+//             const squaredElement = element ** 2;
+//             square.push(squaredElement);
+
+//         }else{
+//             square.push(element);
+//         }
+//     }
+//     return square;
+
+// }
+
+// console.log(squareOddArray(pippo));  // mi aspetto -> [1, 2, 4, 56, 78, 121, 15129, 9, 529, 2, 22, 4]
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //43) Creare una funzione che dato un array di numeri moltiplichi per 2 quelli positivi e divida per due i negativi
+
+//const pippo = [1, 2, 4, 56, 78, 11, -123, 3, -23, 2, 22, 4];
+
 function multiplyPositiveAndDivideNegative(nbrArray) {
-    
+
+    //debugger;
+
+    const result = [];
+
+    for (let i = 0; i < nbrArray.length; i++) {
+
+        const element = nbrArray[i];
+
+        if (element >= 0) {
+            multiplyPositive = element * 2;
+            result.push(multiplyPositive);   //Ricorda che .push viene utilizzato per aggiungere uno o più elementi alla fine di un array.
+
+        } else {
+            divideNegative = element / 2;
+            result.push(divideNegative);
+        }
+    }
+
+    return result;
 }
 
-console.log(multiplyPositiveAndDivideNegative('pippo'));  // mi aspetto -> [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8]
+console.log(multiplyPositiveAndDivideNegative(pippo));  // mi aspetto -> [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8]
