@@ -498,32 +498,32 @@
 
 // FATTO DAL PROF.
 
-function farfallinoTranslator(str) {
+// function farfallinoTranslator(str) {
     
-const vowels = 'aeiou';
+// const vowels = 'aeiou';
 
-let farfallinoStr = '';
+// let farfallinoStr = '';
 
-for (let i = 0; i < str.length; i++) {
+// for (let i = 0; i < str.length; i++) {
     
-    const char = str[i];
+//     const char = str[i];
 
-    if (vowels.includes(char.toLowerCase())) {
+//     if (vowels.includes(char.toLowerCase())) {
         
-        farfallinoStr = farfallinoStr + char + 'f' + char;
+//         farfallinoStr = farfallinoStr + char + 'f' + char;
 
-    } else {
+//     } else {
 
-        farfallinoStr = farfallinoStr + char;
+//         farfallinoStr = farfallinoStr + char;
 
-    }
-}
-return farfallinoStr;
-}
+//     }
+// }
+// return farfallinoStr;
+// }
 
 
-console.log(farfallinoTranslator('leonardo'));
-console.log(farfallinoTranslator('LEONARDO'));
-console.log(farfallinoTranslator('viva la pausa!!'));
+// console.log(farfallinoTranslator('leonardo'));
+// console.log(farfallinoTranslator('LEONARDO'));
+// console.log(farfallinoTranslator('viva la pausa!!'));
 
 
