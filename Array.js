@@ -618,6 +618,8 @@ console.log('è il momento degli Array');
 
 
 // ARRAY DI ARRAY 
+//Matrice (o array multidimensionale) - È un array che contiene altri array come suoi elementi.
+
 
 //const superArray = [[1, 2, 3], [1, 1, 1], [3, 2, 1]]; //ci sono 3 elementi dentro 'superArray'
 
@@ -632,7 +634,7 @@ console.log('è il momento degli Array');
 //console.log(superArray[0][0]); //stessa cosa ma in una riga sola, ma lo printa una sola volta perché lo stesso valore
 
 
-// const superArray = [[1, 2, 3],  //esattamente lo stesso 'superArray' di prima ma messo in colonne  
+// const superArray = [[1, 2, 3],  //griglia 3x3 - esattamente lo stesso 'superArray' di prima ma messo in colonne  
 //                     [1, 1, 1],  // il prof. lo ha ordinato in questa forma per fare un piccolo esempio col ciclo for
 //                     [3, 2, 1]];
 
@@ -647,5 +649,7 @@ console.log('è il momento degli Array');
 //     }
 // }
 
+//Questo è un esempio di cicli annidati
+//I cicli annidati in JavaScript sono un ciclo (chiamato "esterno") che contiene al suo interno un altro ciclo (chiamato "interno")
 
 

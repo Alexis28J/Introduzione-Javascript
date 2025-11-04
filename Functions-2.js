@@ -454,16 +454,16 @@
 
 //FUNZIONE RICORSIVA (VERSIONE RICORSIVA - è più 'elegante')
 
-function fiboRecursive(pos) {
+// function fiboRecursive(pos) {
 
-    if (pos === 0) {
-        return 0;
-    } else if (pos === 1) {
-        return 1;
-    } else {
-        return fiboRecursive(pos - 1) + fiboRecursive(pos - 2);  //se metto 3: fiboRecursive(2) + fiboRecursive(1)
-    }
-}
+//     if (pos === 0) {
+//         return 0;
+//     } else if (pos === 1) {
+//         return 1;
+//     } else {
+//         return fiboRecursive(pos - 1) + fiboRecursive(pos - 2);  //se metto 3: fiboRecursive(2) + fiboRecursive(1)
+//     }
+// }
 
 
 
