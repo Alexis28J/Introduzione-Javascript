@@ -632,20 +632,20 @@ console.log('è il momento degli Array');
 //console.log(superArray[0][0]); //stessa cosa ma in una riga sola, ma lo printa una sola volta perché lo stesso valore
 
 
-const superArray = [[1, 2, 3],  //esattamente lo stesso 'superArray' di prima ma messo in colonne  
-                    [1, 1, 1],  // il prof. lo ha ordinato in questa forma per fare un piccolo esempio col ciclo for
-                    [3, 2, 1]];
+// const superArray = [[1, 2, 3],  //esattamente lo stesso 'superArray' di prima ma messo in colonne  
+//                     [1, 1, 1],  // il prof. lo ha ordinato in questa forma per fare un piccolo esempio col ciclo for
+//                     [3, 2, 1]];
 
-for (let rowNumber = 0; rowNumber < superArray.length; rowNumber++) { //ciclo righe
-    const row = superArray[rowNumber];
+// for (let rowNumber = 0; rowNumber < superArray.length; rowNumber++) { //ciclo righe
+//     const row = superArray[rowNumber];
 
     
-    for (let columnNumber = 0; columnNumber < row.length; columnNumber++) { //ciclo colomne
-        const cell = row[columnNumber];
-        console.log(cell);  //stampa tutti i numeri uno alla volta
-        //printa 1 solo una volta perché il valore è lo stesso (si ripete)
-    }
-}
+//     for (let columnNumber = 0; columnNumber < row.length; columnNumber++) { //ciclo colomne
+//         const cell = row[columnNumber];
+//         console.log(cell);  //stampa tutti i numeri uno alla volta
+//         //printa 1 solo una volta perché il valore è lo stesso (si ripete)
+//     }
+// }
 
 
 
