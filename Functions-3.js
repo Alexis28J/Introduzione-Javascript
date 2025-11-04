@@ -287,7 +287,7 @@
 
 // function powerCycle(base, exponent) {
 
-//     let result = 1; 
+//     let result = 1;  // ricorda che 1 è l'elemento neutro della potenza e della moltiplicazione, 0 è per la somma
 //     const positiveExponent = Math.abs(exponent);   // perché il ciclo funzioni dobbiamo assicurarci che l'esponente non sia negativo
 
 //     for (let i = 0; i < positiveExponent; i++) {   // il ciclo eseguirà l'operazione (result x base) fino a soddisfare il numero del positiveExponent (condizione)
@@ -318,7 +318,7 @@
 //     return 1;
 // }
 
-//     let pow = 1;
+//     let pow = 1;  // ricorda che 1 è l'elemento neutro della potenza e della moltiplicazione, 0 è per la somma
 
 //     for (let i = 0; i < esponente; i++) {
 //         pow = pow * base;

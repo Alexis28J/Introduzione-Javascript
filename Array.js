@@ -3,7 +3,7 @@ console.log('è il momento degli Array');
 
 // ARRAY  - scatola che contiene tanti dati contemporaneamente
 
-// let numbers = [20, 10, 22, 44, 35, 0, -1, 1.5, 100, 20];  //numeri
+//let numbers = [20, 10, 22, 44, 35, 0, -1, 1.5, 100, 20];  //numeri
 
 // console.log(numbers.length); //-> 10    //in questo caso il .length mi butta quanti dati ci sono dentro l'array
 
@@ -218,9 +218,9 @@ console.log('è il momento degli Array');
 
 
 
-//COMPITO PER DOMANI (MARTEDì 4 NOVEMBRE)
+//COMPITO PER DOMANI (MARTEDì 4 NOVEMBRE)  - ESERCIZI DI MAPPING 
 
-const pippo = [1, 2, 4, 56, 78, 11, -123, 3, -23, 2, 22, 4];
+//const pippo = [1, 2, 4, 56, 78, 11, -123, 3, -23, 2, 22, 4];
 
 //41) Creare una funzione che dato un array di numeri li eleva tutti al quadratto
 
@@ -237,6 +237,23 @@ const pippo = [1, 2, 4, 56, 78, 11, -123, 3, -23, 2, 22, 4];
 // }
 
 // console.log(squareArray(pippo));  // mi aspetto -> [1, 4, 16, 3136, ...]
+
+
+//FATTO DAL PROF. USANDO FOR...OF
+
+// function squareArray(nbrArray) {
+
+//     const newArray = [];
+
+//     for (const nbr of nbrArray) {
+//         const square = nbr ** 2;
+//         newArray.push(square);
+//     }
+
+//     return newArray
+// }
+
+// console.log(squareArray(pippo));  // mi aspetto -> [1, 4, 16, 3136, ...] 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -257,8 +274,8 @@ const pippo = [1, 2, 4, 56, 78, 11, -123, 3, -23, 2, 22, 4];
 
 //         const element = nbrArray[i];
 
-//         if (nbrArray[i] % 2 === 1
-//           ||nbrArray[i] % 2 === -1) {
+//         if (nbrArray[i] % 2 === 1        
+//           ||nbrArray[i] % 2 === -1) {    //Invece di aggiungere quest'altra condizione, per essere più CONCISO aggiungo Math.abs(nbrArray[i])
 //             const squaredElement = element ** 2;
 //             square.push(squaredElement);
 
@@ -273,6 +290,8 @@ const pippo = [1, 2, 4, 56, 78, 11, -123, 3, -23, 2, 22, 4];
 // console.log(squareOddArray(pippo));  // mi aspetto -> [1, 2, 4, 56, 78, 121, 15129, 9, 529, 2, 22, 4]
 
 
+// FATTO DAL PROF. - PRATICAMENTE UGUALE AL MIO
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -280,27 +299,353 @@ const pippo = [1, 2, 4, 56, 78, 11, -123, 3, -23, 2, 22, 4];
 
 //const pippo = [1, 2, 4, 56, 78, 11, -123, 3, -23, 2, 22, 4];
 
-function multiplyPositiveAndDivideNegative(nbrArray) {
+// function multiplyPositiveAndDivideNegative(nbrArray) {
 
-    //debugger;
+//     //debugger;
 
-    const result = [];
+//     const sum = [];
 
-    for (let i = 0; i < nbrArray.length; i++) {
+//     for (let i = 0; i < nbrArray.length; i++) {
 
-        const element = nbrArray[i];
+//         const element = nbrArray[i];
 
-        if (element >= 0) {
-            multiplyPositive = element * 2;
-            result.push(multiplyPositive);   //Ricorda che .push viene utilizzato per aggiungere uno o più elementi alla fine di un array.
+//         if (element >= 0) {
+//             multiplyPositive = element * 2;
+//             sum.push(multiplyPositive);   //Ricorda che .push viene utilizzato per aggiungere uno o più elementi alla fine di un array.
 
-        } else {
-            divideNegative = element / 2;
-            result.push(divideNegative);
-        }
+//         } else {
+//             divideNegative = element / 2;
+//             sum.push(divideNegative);
+//         }
+//     }
+
+//     return sum;
+// }
+
+// console.log(multiplyPositiveAndDivideNegative(pippo));  // mi aspetto -> [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8]
+
+// FATTO DAL PROF. - PRATICAMENTE UGUALE AL MIO
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//ALTRO PATTERN DEGLI ARRAY -> FILTER - Decide quali degli elementi dell'array tenere
+
+
+//1) Scrivere una funzione che rimuove dall'Array tutti i numeri dispari
+// let numbers = [20, 10, 22, 44, 35, 0, -1, 1.5, 100, 20];  //numeri
+
+// function removeOdd(nbrArray) {  //funzione che rimuove i numeri dispari dell'Array numbers
+
+//     const newArray = [];
+
+//     for (let i = 0; i < nbrArray.length; i++) {
+//         const element = nbrArray[i];
+
+//         if (element % 2 === 0) {
+//             newArray.push(element);
+//         }
+//     }
+
+//     return newArray
+// }
+
+// console.log(removeOdd(numbers));
+
+
+//2) Scrivere una funzione che rimuova da un Array di stringhe tutte quelle che iniziano per p
+//let strings = ['pippo', 'pluto', 'topolino', 'leonardo']  //stringhe
+
+// function removeStartingWithP(strArray) {
+
+//     const newArray = [];
+
+//     for (let i = 0; i < strArray.length; i++) {
+//         const element = strArray[i];
+//         const firstChar = element[0];
+//         const firstCharLower = firstChar.toLowerCase();
+
+//         if (firstCharLower !== 'p') {
+//             newArray.push(element);
+//         }
+//     }
+
+//     return newArray;
+
+// }
+
+// console.log(removeStartingWithP(strings));
+
+
+//3)  Scrivere una funzione che rimuove i numeri negativi da un array di numeri
+// let numbers = [20, 10, 22, 44, 35, 0, -1, 1.5, 100, 20];  //numeri
+
+
+// function keepPositive(nbrArray) {
+
+//     const newArray = [];
+
+//     for (let i = 0; i < nbrArray.length; i++) {
+//         const element = nbrArray[i];
+
+//         if (element >= 0) {
+//             newArray.push(element);
+//         }
+//     }
+
+//     return newArray
+// }
+
+// console.log(keepPositive(numbers));
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//ALTRO PATTERN DELL'ARRAY -> REDUCE - Trasforma l'Array producendo un risultato che dipende dai componenti dell'Array
+
+// 1) Scrivere una funzione che somma tutti i numeri di un Array di numeri
+// let numbers = [20, 10, 22, 44, 35, 0, -1, 1.5, 100, 20];  //numeri
+
+// function sumAll(nbrArray) {
+
+//     let sum = 0;  // questa variabile conterrà il risultato finale della somma e si chiama "accumulatore"
+//     // ricorda che 0 è il valore neutro della somma  
+
+//     for (let i = 0; i < nbrArray.length; i++) {
+//         const element = nbrArray[i];
+//         sum = sum + element;
+
+//     }
+
+//     return sum;
+
+// }
+
+// console.log(sumAll(numbers));
+
+
+// 2) Scrivere una funzione che calcola la media di un Array di numeri
+// let numbers = [20, 10, 22, 44, 35, 0, -1, 1.5, 100, 20];  //numeri
+
+// function calculateMean(nbrArray) {
+
+//     let sum = 0;  // questa variabile conterrà il risultato finale della somma e si chiama "accumulatore"
+//     // ricorda che 0 è il valore neutro della somma  
+
+//     for (let i = 0; i < nbrArray.length; i++) {
+//         const element = nbrArray[i];
+//         sum = sum + element;
+//     }
+
+//     const mean = sum / nbrArray.length;
+
+//     return mean;
+
+// }
+
+// console.log(calculateMean(numbers));  
+
+
+// UN'ALTRA FORMA DI FARE LA FUNZIONE DELLA MEDIA DELL'ARRAY DEI NUMERI
+// Come abbiamo già fatto la funzione della somma, allora potevamo e possiamo sfruttarla per fare la funzione della media
+// function calculateMean2(nbrArray) {
+
+//     const sum = sumAll(nbrArray);  //Funzione della somma dell'Array (sumAll). Il bello delle funzioni è che possiamo richiamarli all'infinito
+
+//     const mean = sum / nbrArray.length;
+
+//     return mean;
+// }
+
+// console.log(calculateMean2(numbers));
+
+
+// 3) Scrivere una funzione che genera una stringa composta dalle iniziali delle stringhe contenute in un Array
+
+// let strings = ['pippo', 'pluto', 'topolino', 'leonardo']  //stringhe
+
+
+// function concatFirstChar(strArray) {
+
+//     let newString = '';    //In questo esercizio devo generare una stringa, NON un Array
+
+//     for (let i = 0; i < strArray.length; i++) {
+
+//         const element = strArray[i];
+
+//         const firstChar = element[0];
+
+//         newString = newString + firstChar; // Per appiccicare una stringa devo concatenarle. Non devo usare .push come succede con le Array
+
+//     }
+
+//     return newString;
+// }
+
+// console.log(concatFirstChar(strings));
+
+
+// 4) Scrivere una funzione che restituisce una somma delle lunghezze delle stringhe di un Array
+
+//let strings = ['pippo', 'pluto', 'topolino', 'leonardo']  //stringhe
+
+// function sumLength(strArray) {
+
+//     let sumOfLengths = 0;
+
+//     for (let i = 0; i < strArray.length; i++) {
+//         const element = strArray[i];
+//         const length = element.length;
+//         sumOfLengths = sumOfLengths + length;
+//     }
+//     return sumOfLengths
+
+// }
+
+//console.log(sumLength(strings));
+
+
+//A volte la REDUCE non fa operazioni matematiche ma cerca degli elementi
+// 5) Scrivere una funzione che trova il numero più grande in un Array
+
+// let numbers = [20, 10, 22, 44, 35, 0, -1, 1.5, 100, 20];  //numeri
+
+
+// function findMax(nbrArray) {
+
+//     let max = 0;
+
+//     for (let i = 0; i < nbrArray.length; i++) { 
+//         const element = nbrArray[i];
+
+//         if (element > max) {  //'se l'elemento è maggiore del massimo ATTUALE'
+//             max = element;  //se la condizione è vera allora sostituisco il valore della variabile 'max' con quello dell'elemento'
+//         }
+
+//     }
+//     return max;
+// }
+
+// console.log(findMax(numbers));
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// COSTRUTTORE DI ARRAY  ---  Probabilmente non li useremo mai
+
+// const pluto = new Array(); //questa notazione equivale a dire 'const pluto = []'
+// console.log(pluto);
+
+
+// const pippo = new Array(3, 5, 8); //'const pippo = [3, 5, 8]'
+// console.log(pippo);
+
+
+// const paperino = new Array(10); // 'const paperino = [ , , , , , , , , , ]'  -> array di 10 posizioni VUOTE 
+// console.log(paperino);
+
+// //Questo Array paperino lo posso ciclare
+
+// for (const element of paperino) {
+//     console.log(element);  // tutti undefined 
+// }
+
+
+//INDEXOF (IndexOf) -> mi da la posizione di un elemento rispetto a un Array
+
+//let numbers = [20, 10, 22, 44, 35, 0, -1, 1.5, 100, 20];  //numeri
+
+//console.log(numbers.indexOf(100));
+//console.log(numbers.indexOf(9999)); //se l'elemento NON è nell'Array restituisce -1
+
+
+// INCLUDES (.includes) -> ci dice se un elemento è contenuto o meno
+
+//let numbers = [20, 10, 22, 44, 35, 0, -1, 1.5, 100, 20];  //numeri
+
+//console.log(numbers.includes(100));  // mi darà true perché effettivamente lo include
+//console.log(numbers.includes(9999)); //in questo caso, invece, mi darà false perché non lo include
+
+
+// CONCAT (.concat) -> ci permette di unire 2 array, creando a sua volta un nuovo array
+
+// const topogigio = ['leonardo', 'mattia', 'daniel'];
+
+// const paperina = ['evelyn', 'salma', 'stefania']
+
+// const gastone = topogigio.concat(paperina);
+
+// console.log(gastone);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// FUNZIONI MULTI PARAMETRICHE
+
+// function sumAllParams(a, b, c) {   //3 parametri
+
+//     const sum = a + b + c;
+
+//     return sum;
+
+// }
+
+
+// function sumAllParams2(a, b, c, d) {   //4 parametri
+
+//     const sum = a + b + c + d;
+
+//     return sum;
+
+// }
+
+//C'è una forma per fare una funzione con vari parametri --- si userà poco ma è meglio saperlo riconoscere
+// function sumAllParams(...params) {  // params è un array che contiene tutti i parametri passati alla funzione
+
+//     let result = 0;
+
+//     for (let i = 0; i < params.length; i++) {
+//         const element = params[i];
+//         result = result + element;
+//     }
+//     return result;
+// }
+
+// console.log(sumAllParams(2, 5, 6, 7));
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// ARRAY DI ARRAY 
+
+//const superArray = [[1, 2, 3], [1, 1, 1], [3, 2, 1]]; //ci sono 3 elementi dentro 'superArray'
+
+
+//console.log(superArray.length);
+//console.log(superArray[0]); //primo elemento del 'superArray'
+
+//const arrayInterno = superArray[0];
+//const elemento0dellArrayInterno = arrayInterno[0];  //primo elemento del primo elemento (Array) dentro 'superArray'
+
+//console.log(elemento0dellArrayInterno);  // quindi mi printa 1 
+//console.log(superArray[0][0]); //stessa cosa ma in una riga sola, ma lo printa una sola volta perché lo stesso valore
+
+
+const superArray = [[1, 2, 3],  //esattamente lo stesso 'superArray' di prima ma messo in colonne  
+                    [1, 1, 1],  // il prof. lo ha ordinato in questa forma per fare un piccolo esempio col ciclo for
+                    [3, 2, 1]];
+
+for (let rowNumber = 0; rowNumber < superArray.length; rowNumber++) { //ciclo righe
+    const row = superArray[rowNumber];
+
+    
+    for (let columnNumber = 0; columnNumber < row.length; columnNumber++) { //ciclo colomne
+        const cell = row[columnNumber];
+        console.log(cell);  //stampa tutti i numeri uno alla volta
+        //printa 1 solo una volta perché il valore è lo stesso (si ripete)
     }
-
-    return result;
 }
 
-console.log(multiplyPositiveAndDivideNegative(pippo));  // mi aspetto -> [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8]
+
+
