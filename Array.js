@@ -638,6 +638,11 @@ console.log('è il momento degli Array');
 //                     [1, 1, 1],  // il prof. lo ha ordinato in questa forma per fare un piccolo esempio col ciclo for
 //                     [3, 2, 1]];
 
+//Per accedere a un elemento, si usano due indici: console.log(tabella[0][1]); // Output: 2
+//    tabella[0] accede alla prima riga: [1, 2, 3]
+//    tabella[0][1] accede al secondo elemento della prima riga: 2
+
+
 // for (let rowNumber = 0; rowNumber < superArray.length; rowNumber++) { //ciclo righe
 //     const row = superArray[rowNumber];
 
