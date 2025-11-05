@@ -426,3 +426,36 @@ let strings = ['pippo', 'pluto', 'topolino', 'leonardo']  //stringhe
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+// function sum (numbers) {
+  
+//   let somma = 0;
+  
+//   for(let i = 0; i < numbers.length; i++){
+
+//     somma += numbers[i];
+
+//     if (numbers.length === 0) {
+//         console.log('array è vuota');
+//         }else{
+//             somma += numbers[i];
+//         }
+//   }  
+  
+//   return somma;
+// }
+
+// console.log(sum(numbers));
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Given a random non-negative number, you have to return the digits of this number within an array in reverse order.
+
+
+function digitize(n) {
+    
+   return n.toString().split('').reverse().map(Number);
+
+}
+
+console.log(digitize(123));
