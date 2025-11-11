@@ -23,7 +23,7 @@ console.log(sayHello);
 
 const numbers2 = [-100, -30, 20, 11, 1, 40, -21, -15, 3, 9, 300, 5001]; //un array di numeri
 
-const testArray = ['bo', 'pa', 'pippo', 'pluto', 'paperino', 'paperone']; // un array di stringhe
+const testArray = ['bo', 'pa', 'pippo', 'pluto', 'paperino', 'paperone', 'qui', 'quo', 'qua']; // un array di stringhe
 
 
 //Facciamo una funzione di filtro per tenere solo i numeri positivi
@@ -256,5 +256,84 @@ console.log(highMap(testArray, (str) => str.toUpperCase()));
 console.log(testArray.map((str) => str.toUpperCase()));
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//REDUCE
+
+//Esempio semplice di una reduce - Funzione che dato un'array di numeri, li sommo tra loro
+function sumAll(nbrArray) {
+
+    let sum = 0;
+
+    for (let i = 0; i < nbrArray.length; i++) {
+
+        const nbr = nbrArray[i];
+
+        sum = sum + nbr;
+
+    }
+
+    return sum;
+
+}
+
+console.log(sumAll(numbers2));
+
+
+//Funzione che prende un'Array di stringhe e mi ritorna il primo carattere
+
+function stringWithFirstChars(strArray) {
+
+    let newString = '';
+
+    for (let i = 0; i < strArray.length; i++) {
+        const str = strArray[i];
+        const firstChar = str[0];
+        newString = newString + firstChar;
+    }
+    return newString;
+}
+
+console.log(stringWithFirstChars(testArray));
+
+//Funzione generica di riduzione
+function highReduce(array, reduceFunction, startingValue) {  //la highReduce ha bisogno di tre cose per funzionare
+    
+    let accumulator = startingValue;  //startingValue = valore di inizio 
+
+    for (let i = 0; i < array.length; i++) {
+
+        const current = array[i];
+
+        accumulator = reduceFunction(accumulator, current, i)
+        
+    }
+
+    return accumulator;
+
+}
+
+console.log(highReduce(numbers2, (sum, nbr) => sum + nbr, 0));  //sum = accumulator, nbr = current, 0 = startingValue (posizione iniziale)
+// Ci sono i 3 parametri: numbers2 = array, (sum, nbr) => sum + nbr = Function (lambda), 0 = startingValue
+
+console.log(numbers2.reduce((sum, nbr) => sum + nbr, 0));  // la funzione .reduce è già inclusa nel linguaggio
+
+
+
+function sumFirstChar(acc, curr) {
+
+    const firstChar = curr[0];
+    
+    return acc + firstChar;
+}
+
+console.log(highReduce(testArray, sumFirstChar, ''));
+console.log(testArray.reduce(sumFirstChar, '')); //è equivalente al console.log precedente
+console.log(testArray.reduce((acc, curr) => acc + curr[0], '')); //uso la lambda e anche questo è equivalente 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//ESERCIZI - VEDI "ESERCIZI-3.JS"
 
 
