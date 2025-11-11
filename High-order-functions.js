@@ -2,9 +2,9 @@ function sayHello() {
     console.log('hello');
 }
 
-const helloHello = () => console.log('hello hello!!');
+const helloHello = () => console.log('hello hello!!'); //questa è una funzione lambda (funzione freccia)
 
-const superHello = function () {
+const superHello = function () {    //questa funzione è anonima perchè non ha un nome
     console.log('super hello');
 }
 
@@ -36,7 +36,7 @@ function keepPositive(nbrArray) {
     // for (const nbr of nbrArray) { 
 
     //     if (nbr >= 0) {
-    //         newArray.push(nbr);   //l metodo .push() in JavaScript viene utilizzato per aggiungere uno o più elementi alla fine di un array, modificando l'array originale.
+    //         newArray.push(nbr);   //il metodo .push() in JavaScript viene utilizzato per aggiungere uno o più elementi alla fine di un array, modificando l'array originale.
     //     }
     // }
     // return newArray;
@@ -97,14 +97,16 @@ console.log(keepLongerThan3(testArray));
 
 
 //Funzione di filtro
-function highFilter(array, conditionFunction) {  //dentro "array" c'è numbers2, dentro "conditionFunction" c'è la funzione "isEven"
+function highFilter(array, conditionFunction) {  
+// la funzione di filtro ha bisogno di due cose per funzionare: un array e una condizione
+//dentro "array" c'è numbers2, dentro "conditionFunction" c'è la funzione "isEven"
 
     const newArray = [];
 
     for (let i = 0; i < array.length; i++) {
         const element = array[i];
 
-        if (conditionFunction(element)) {
+        if (conditionFunction(element)) { 
             newArray.push(element);
         }
     }
@@ -112,7 +114,7 @@ function highFilter(array, conditionFunction) {  //dentro "array" c'è numbers2,
 }
 
 //ipotizziamo se vogliamo tenere solo i numeri pari
-function isEven(nbr) {   //ho creato la condizione
+function isEven(nbr) {   //ho creato la condizione  //questo è il corpo della condizione
     if (nbr % 2 === 0) {
         return true;
     } else {
@@ -120,7 +122,10 @@ function isEven(nbr) {   //ho creato la condizione
     }
 }
 
-console.log(highFilter(numbers2, isEven));  //isEven è la condizione
+console.log(highFilter(numbers2, isEven));  //isEven è la condizione  //highFilter è la funzione di filtro
+//nulla mi vieta di farlo con una lambda
+console.log(highFilter(numbers2, (nbr) => nbr % 2 === 0)); //lambda
+console.log(numbers2.filter((nbr) => nbr % 2 === 0)); //funzione .filter standard del linguaggio Javascript
 
 
 //facciamo una funzione in cui escluda parole che cominciano con p
@@ -228,6 +233,9 @@ function multiplyBy3Number(nbr) {
 console.log(highMap(numbers2, multiplyBy3Number));
 //nulla mi vieta di farlo con una lambda
 console.log(highMap(numbers2, (nbr) => nbr * 3)); //lambda
+
+
+// high order function di js
 console.log(numbers2.map((nbr) => nbr * 3)); //funzione .map standard del linguaggio Javascript
 
 

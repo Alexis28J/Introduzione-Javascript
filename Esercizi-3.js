@@ -1,22 +1,24 @@
 //ESERCIZI DI HIGH-ORDER-FUNCTIONS 
+//Una funzione di alto ordine è una funzione che può accettare altre funzioni come argomenti o restituire una funzione come risultato. 
+//Questo permette di creare codice più modulare, riusabile e flessibile.
 
-function highFilter(array, conditionFunction){
+function highFilter(array, conditionFunction){   //funzione di filtro
 
     const newArray = []
 
     for (let i = 0; i < array.length; i++) {
         const element = array[i];
 
-        if (conditionFunction(element)) {
+        if (conditionFunction(element)) {   //la condizione è esterna alla funzione, viene passata come argomento
             newArray.push(element);
         }
-        
+
     }
 
     return newArray;
 }
 
-function highMap(array, transformFunction){
+function highMap(array, transformFunction) {  //funzione di mappatura
 
     const newArray = [];
 
@@ -24,15 +26,15 @@ function highMap(array, transformFunction){
 
         const element = array[i];
 
-        const newElement = transformFunction(element, i);
+        const newElement = transformFunction(element, i); //la trasformazione è esterna alla funzione, viene passata come argomento
 
-        newArray.push(newElement); 
+        newArray.push(newElement);
     }
     return newArray;
 }
 
 
-function highReduce(array, reduceFunction, startingValue){
+function highReduce(array, reduceFunction, startingValue) {  //funzione di riduzione
 
     let accumulator = startingValue;
 
@@ -40,8 +42,8 @@ function highReduce(array, reduceFunction, startingValue){
 
         const current = array[i];
 
-        accumulator = reduceFunction(accumulator, current, i)
-        
+        accumulator = reduceFunction(accumulator, current, i) //la riduzione è esterna alla funzione, viene passata come argomento
+
     }
 
     return accumulator;
@@ -61,30 +63,426 @@ const stringArray = ['pizza', 'spaghetti', 'frittata', 'lasagne'];
 //51) Scrivi una funzione che, dato un array di numeri, crei un array con tutti i numeri
 // maggiori di 100
 
+//const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
+
+//SENZA HIGH ORDER FUNCTIONS (FUNZIONE STANDARD)
+function numberGreaterThan100(nbr) {
+    const newArray = [];
+
+    for (let i = 0; i < nbr.length; i++) {
+        const element = nbr[i];
+
+        if (element > 100) {
+            newArray.push(element);
+        }
+    }
+    return newArray
+}
+
+console.log(numberGreaterThan100(numberArray));
+
+
+//CON HIGH ORDER FUNCTIONS
+
+function highFilter(array, conditionFunction) {
+
+    const newArray = []
+
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+
+        if (conditionFunction(element)) {   //la condizione è esterna alla funzione, viene passata come argomento
+            newArray.push(element);
+        }
+    }
+    return newArray;
+}
+
+function biggerThan100(nbr) {
+    if (nbr > 100) {
+        return true
+    } else {
+        return false
+    }
+}
+
+console.log(highFilter(numberArray, biggerThan100));
+
+
+//HIGH ORDER FUNCTIONS DI JS
+
+console.log(numberArray.filter(biggerThan100));  //filter è una funzione di ordine superiore: prende un’altra funzione come argomento e restituisce un nuovo array con gli elementi che soddisfano la condizione.
+console.log(numberArray.filter((nbr) => nbr > 100)); //questa è la versione lambda della condizione "biggerThan100"
+//nbr è l'elemento dell'array che viene passato alla funzione di filtro 
+//nbr è un nome di variabile che può essere cambiato a piacere
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 //52) Scrivi una funzione che, dato un array di stringhe, crei un array con tutte le stringhe 
 // che finiscono con 'a'
 
+//const stringArray = ['pizza', 'spaghetti', 'frittata', 'lasagne'];
+
+//FUNZIONE STANDARD
+function wordsEndingWithA(array) {
+
+    const newArray = [];
+    for (let i = 0; i < array.length; i++) {
+        const str = array[i];
+        const lastChar = str[str.length - 1];  //per esempio se una stringa è lunga 4 (composta da 4 caratteri), l'ultimo carattere sarà nella posizione 3 perchè si conta dalla posizione 0
+
+        if (lastChar === 'a') {
+            newArray.push(str);
+        }
+
+    }
+    return newArray;
+}
+
+console.log(wordsEndingWithA(stringArray));
+
+
+//HIGH ORDER FUNCTIONS
+
+function highFilter(array, conditionFunction) {
+
+    const newArray = []
+
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+
+        if (conditionFunction(element)) {   //la condizione è esterna alla funzione, viene passata come argomento
+            newArray.push(element);
+        }
+    }
+    return newArray;
+}
+
+function lastCharIsA(str) {   //conditionFunction = lastCharIsA
+    const lastChar = str[str.length - 1]; //[str.length - 1] prende l'ultimo carattere della stringa
+    if (lastChar === 'a') {  //l'if è una funzione che funziona come condizione
+        return true;
+    } else {
+        return false;
+    }
+}
+console.log(highFilter(stringArray, lastCharIsA)); //highFilter è la funzione di filtro che prende come argomento la condizione "lastCharIsA"
+
+
+//HIGH ORDER FUNCTIONS DI JS
+console.log(stringArray.filter(lastCharIsA));
+console.log(stringArray.filter((str) => str[str.length - 1] === 'a'))   //questa è la versione lambda della condizione "lastCharIsA"
+//stringArray.filter(...) è una funzione di ordine superiore: prende un’altra funzione come argomento e restituisce un nuovo array con gli elementi che soddisfano la condizione.
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //53) Scrivi una funzione che, dato un array di numeri, crei un array con tutti i numeri
 // divisibili per 3
+
+//const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
+
+//FUNZIONE STANDARD
+
+function numberDivisibleBy3(nbr) {
+
+    const newArray = [];
+
+    for (let i = 0; i < nbr.length; i++) {
+        const element = nbr[i];
+
+        if (element % 3 === 0) {
+            newArray.push(element);
+        }
+    }
+    return newArray;
+}
+
+console.log(numberDivisibleBy3(numberArray));
+
+
+//HIGH ORDER FUNCTIONS
+
+function highFilter(array, conditionFunction) {
+
+    const newArray = []
+
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+
+        if (conditionFunction(element)) {   //la condizione è esterna alla funzione, viene passata come argomento
+            newArray.push(element);
+        }
+    }
+    return newArray;
+}
+
+function IsDivisibleBy3(nbr) {
+    if (nbr % 3 === 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+console.log(highFilter(numberArray, IsDivisibleBy3));
+
+
+//HIGH ORDER FUNCTIONS DI JS
+
+console.log(numberArray.filter(IsDivisibleBy3));
+console.log(numberArray.filter((number) => number % 3 === 0));  //number è un nome a caso che ho messo alla variabile
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // map
 //54) Scrivi una funzione che, dato un array di numeri, crei un array con tutti i numeri
 // elevati al cubo
 
-//55) Scrivi una funzione che, dato un array di stringhe, crei un array con tutte le stringhe 
+//const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
+
+//FUNZIONE STANDARD
+
+function numberCubed(nbr) {
+
+    const newArray = [];
+
+    for (let i = 0; i < nbr.length; i++) {
+        const element = nbr[i];
+        newArray.push(element ** 3);
+    }
+    return newArray;
+}
+
+console.log(numberCubed(numberArray));
+
+//HIGH ORDER FUNCTIONS
+
+function highMap(array, transformFunction) {  //funzione di mappatura
+
+    const newArray = [];
+
+    for (let i = 0; i < array.length; i++) {
+
+        const element = array[i];
+
+        const newElement = transformFunction(element, i); //la trasformazione è esterna alla funzione, viene passata come argomento
+
+        newArray.push(newElement);
+    }
+    return newArray;
+}
+
+function powerOfThree(nbr) {
+    return nbr ** 3;
+}
+
+console.log(highMap(numberArray, powerOfThree));
+
+
+
+//HIGH ORDER FUNCTIONS DI JS
+
+console.log(numberArray.map(powerOfThree));
+console.log(numberArray.map((number) => number ** 3));
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//55) Scrivi una funzione che, dato un array di stringhe, crei un array con tutte le stringhe
 // con la prima lettera maiuscola
+
+//const stringArray = ['pizza', 'spaghetti', 'frittata', 'lasagne'];
+
+//FUNZIONE STANDARD
+
+function wordToUpperCase(str) {
+    
+    const newArray = [];
+
+    for (let i = 0; i < str.length; i++) {
+        const element = str[i];
+        newArray.push(element[0].toUpperCase() + element.slice(1));   
+        //str.slice(1): Restituisce una nuova stringa che contiene tutti i caratteri a partire dal secondo (l'indice 1) fino alla fine.
+    }
+    return newArray;
+}
+
+console.log(wordToUpperCase(stringArray));
+
+
+//HIGH ORDER FUNCTIONS
+
+function highMap(array, transformFunction) {  //funzione di mappatura
+
+    const newArray = [];
+
+    for (let i = 0; i < array.length; i++) {
+
+        const element = array[i];
+
+        const newElement = transformFunction(element, i); //la trasformazione è esterna alla funzione, viene passata come argomento
+
+        newArray.push(newElement);
+    }
+    return newArray;
+}
+
+function firstCharToUpperCase(str) {
+    return str[0].toUpperCase() + str.slice(1);
+
+}
+
+console.log(highMap(stringArray, firstCharToUpperCase));
+
+
+//HIGH ORDER FUNCTIONS DI JS
+
+console.log(stringArray.map(firstCharToUpperCase));
+console.log(stringArray.map((str) => str[0].toUpperCase() + str.slice(1)));
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //56) Scrivi una funzione che, dato un array di numeri, crei un array di stringhe di
 //cancelletti lunga quanto il numero originale
 // [3, 4, 1, 0] -> ['###', '####', '#', '']
 
+//const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
+
+//FUNZIONE STANDARD
+
+function numberToHashtag(nbr) {
+    
+     const newArray = [];
+
+     for (let i = 0; i < nbr.length; i++) {
+        const element = nbr[i];
+        if (element > 0) {
+          newArray.push('#'.repeat(element));   //potevo mettere nbr[i] direttamente senza aver creato element
+        } else if (element < 0 || element === 0){
+          newArray.push('');
+        }
+     }
+return newArray;
+}
+
+console.log(numberToHashtag(numberArray));
+
+
+//HIGH ORDER FUNCTIONS
+
+function highMap(array, transformFunction) {  //funzione di mappatura
+
+    const newArray = [];
+
+    for (let i = 0; i < array.length; i++) {
+
+        const element = array[i];
+
+        const newElement = transformFunction(element, i); //la trasformazione è esterna alla funzione, viene passata come argomento
+
+        newArray.push(newElement);
+    }
+    return newArray;
+}
+
+function toHashtag(nbr) {
+        if (nbr > 0) {
+          return '#'.repeat(nbr);   //potevo mettere nbr[i] direttamente senza aver creato element
+        } else if (nbr < 0 || nbr === 0){
+          return '';
+        }
+}
+
+console.log(highMap(numberArray, toHashtag));
+
+
+//HIGH ORDER FUNCTIONS DI JS
+
+console.log(numberArray.map(toHashtag));
+console.log(numberArray.map((number) => number > 0? '#'.repeat(number) : '' ));
+
+
+
 // reduce
 //57) Scrivi una funzione che, dato un array di numeri, li moltiplichi tutti tra loro
 
-//58) Scrivi una funzione che, dato un array di stringhe, crei una stringa composta 
+//const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
+
+//FUNZIONE STANDARD
+
+function multiplyBetweenThem(nbr) {
+    
+    const newArray = [];
+
+    let product = 1;  //valore neutro nella moltiplicazione
+
+    for (let i = 0; i < nbr.length; i++) {
+        const element = nbr[i];
+        product = product * element;
+        newArray.push(product);
+    }
+
+    return newArray;
+}
+
+console.log(multiplyBetweenThem(numberArray));
+
+
+//HIGH ORDER FUNCTIONS
+
+function highReduce(array, reduceFunction, startingValue) {  //funzione di riduzione
+
+    let accumulator = startingValue;
+
+    for (let i = 0; i < array.length; i++) {
+
+        const current = array[i];
+
+        accumulator = reduceFunction(accumulator, current, i) //la riduzione è esterna alla funzione, viene passata come argomento
+
+    }
+
+    return accumulator;
+}
+
+function multiplyAll(nbr) {
+    
+}
+
+//HIGH ORDER FUNCTIONS DI JS
+
+
+//58) Scrivi una funzione che, dato un array di stringhe, crei una stringa composta
 // dalle prime tre lettere delle strighe originarie
+
+
+//FUNZIONE STANDARD
+
+//HIGH ORDER FUNCTIONS
+
+//HIGH ORDER FUNCTIONS DI JS
+
 
 //59) Scrivi una funzione che, dato un array di numeri, trovi il maggiore
 
+//FUNZIONE STANDARD
+
+//HIGH ORDER FUNCTIONS
+
+//HIGH ORDER FUNCTIONS DI JS
+
+
 //60) Scrivi una funzione che, dato un array di stringhe, trovi la stringa con più
 // volte ripetuta la lettera t;
+
+
+//FUNZIONE STANDARD
+
+//HIGH ORDER FUNCTIONS
+
+//HIGH ORDER FUNCTIONS DI JS
