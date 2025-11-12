@@ -344,4 +344,181 @@ console.log(testArray.reduce((acc, curr) => acc + curr[0], '')); //uso la lambda
 
 //ESERCIZI - VEDI "ESERCIZI-3.JS"
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//FOR-EACH
+//non è particolarmente utile
+
+
+const students = ['luis', 'alexander', 'stefania', 'eros', 'daniel', 'salma'];
+const numbers3 = [30, 12, 5, 11, 300, 400, 1];
+
+for (let i = 0; i < students.length; i++) {  //ciclo for normale
+
+    const student = students[i];
+    
+    console.log(student);
+}
+
+
+for (const student of students) {  //ciclo for of - funziona uguale a quello di prima
+    console.log(student);
+}
+
+students.forEach((student) => console.log(student));  //for each - funziona esattamente uguale a quelli di prima
+students.forEach((student, i) => console.log(i, student));  //volendo si può aggiungere la i e ti stamperà anche la i (indice)
+// 0 luis 
+// 1 alexander 
+// 2 stefania 
+// 3 eros 
+// 4 daniel 
+// 5 salma
+
+students.forEach((pippo, pluto) => console.log(pluto, pippo));
+
+
+//FIND
+
+function isGreaterThan100(nbr) {  //condition function
+    return nbr > 100;
+}
+function isGreaterThan5000(nbr) {  //condition function
+    return nbr > 5000;
+}
+
+console.log(numbers3.filter(isGreaterThan100));
+
+console.log(numbers3.find(isGreaterThan100)); //è uguale a quello di prima
+//console.log(numbers.filter(isGreaterThan100)[0]); //si può avere lo stesso risultato con filter ma è più macchinoso
+
+
+//SOME
+
+console.log(numbers3.some(isGreaterThan100));  //true
+console.log(numbers3.some(isGreaterThan5000)); //false
+
+
+//SORT
+//Mette in ordine le cose, principalmente gli Array
+
+numbers3.sort();
+console.log(numbers3); 
+//stampa: Array(7) [ 1, 11, 12, 30, 300, 400, 5 ] - gli ordina come se fossero delle stringhe e non va bene
+
+students.sort();
+console.log(students);
+//stampa: Array(6) [ "alexander", "daniel", "eros", "luis", "salma", "stefania" ] - qui va bene
+
+
+function compareNumbers(n1, n2) {  //SEGUO UNA LOGICA
+    
+if (n1 > n2) { //se il primo numero è più grande del secondo
+     return 1; //ritorno un numero POSITIVO
+} else if (n2 > n1) { //invece se il primo numero è più piccolo del secondo
+     return -1; //ritorno un numero NEGATIVO
+} else {
+     return 0;
+}
+}
+
+numbers3.sort(compareNumbers);  //per ordine DECRESCENTE, scrivere "-compareNumbers" (INFO DA VERIFICARE!!)
+console.log(numbers3);
+//Ora stampa: Array(7) [ 1, 5, 11, 12, 30, 300, 400 ] - i numeri sono ordinati grazie alla funzione
+
+
+
+//SE SCRIVO:
+// function compareNumbers(n1, n2) {
+//     return n1 - n2;                  //è un riassunto della funzione prima e funziona uguale comunque
+// }
+
+function compareNumbersDescending(n1, n2) {  // PER L'ORDINE DISCENDENTE
+    return n2 - n1;
+}
+
+function compareStringAscending(s1, s2) {
+    return s1.localCompare(s2)
+}
+
+function compareStringDescending(s1, s2) {
+    //return -s1.localeCompare(s2);
+    return s2.localeCompare(s1)
+}
+
+numbers3.sort(compareNumbersDescending);
+console.log(numbers3);
+
+students.sort(compareStringDescending);
+console.log(students);
+
+
+//ESERCIZIO DI ESEMPIO - paragoniamo macchine
+
+const cars = [
+    {
+        model: "g-wagon",
+        producer: "mercedes",
+        maxSpeed: 180,
+    },
+    {
+        model: "cla",
+        producer: "mercedes",
+        maxSpeed: 225,
+    },
+    {
+        model: "panda",
+        producer: "fiat",
+        maxSpeed: 150,
+    },
+    {
+        model: "bravo",
+        producer: "fiat",
+        maxSpeed: 180,
+    },
+    {
+        model: "a4",
+        producer: "audi",
+        maxSpeed: 225,
+    }
+    
+];
+
+function compareCarsBySpeedDescending(car1, car2) {  
+    return car2.maxSpeed - car1.maxSpeed;
+}
+
+cars.sort(compareCarsBySpeedDescending);
+console.log(cars);
+
+
+function compareCarsByModelAscending(car1, car2) {  //il model è una stringa
+    return car1.model.localeCompare(car2.model);
+}
+
+cars.sort(compareCarsByModelAscending);
+console.log(cars);
+
+
+function compareCarsBySpeedDescendingAndModelAscending(car1, car2) {  
+    if (car1.maxSpeed > car2.maxSpeed) {
+        return -1;
+    } else if (car2.maxSpeed > car1.maxSpeed) {
+        return 1;
+    } else {
+        return car1.model.localeCompare(car2.model);
+    }
+    }
+
+    cars.sort(compareCarsBySpeedDescendingAndModelAscending);
+    console.log(cars);
+    
+
+
+
+
+
+
+
+
+
 
