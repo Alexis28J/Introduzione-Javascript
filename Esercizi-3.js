@@ -1,713 +1,713 @@
-//ESERCIZI DI HIGH-ORDER-FUNCTIONS 
-//Una funzione di alto ordine è una funzione che può accettare altre funzioni come argomenti o restituire una funzione come risultato. 
-//Questo permette di creare codice più modulare, riusabile e flessibile.
+// //ESERCIZI DI HIGH-ORDER-FUNCTIONS 
+// //Una funzione di alto ordine è una funzione che può accettare altre funzioni come argomenti o restituire una funzione come risultato. 
+// //Questo permette di creare codice più modulare, riusabile e flessibile.
 
-function highFilter(array, conditionFunction) {   //funzione di filtro
+// function highFilter(array, conditionFunction) {   //funzione di filtro
 
-    const newArray = []
+//     const newArray = []
 
-    for (let i = 0; i < array.length; i++) {
-        const element = array[i];
+//     for (let i = 0; i < array.length; i++) {
+//         const element = array[i];
 
-        if (conditionFunction(element, i, array)) {   //la condizione è esterna alla funzione, viene passata come argomento
-            newArray.push(element);
-        }
+//         if (conditionFunction(element, i, array)) {   //la condizione è esterna alla funzione, viene passata come argomento
+//             newArray.push(element);
+//         }
 
-    }
+//     }
 
-    return newArray;
-}
+//     return newArray;
+// }
 
-function highMap(array, transformFunction) {  //funzione di mappatura
+// function highMap(array, transformFunction) {  //funzione di mappatura
 
-    const newArray = [];
+//     const newArray = [];
 
-    for (let i = 0; i < array.length; i++) {
+//     for (let i = 0; i < array.length; i++) {
 
-        const element = array[i];
+//         const element = array[i];
 
-        const newElement = transformFunction(element, i); //la trasformazione è esterna alla funzione, viene passata come argomento
+//         const newElement = transformFunction(element, i); //la trasformazione è esterna alla funzione, viene passata come argomento
 
-        newArray.push(newElement);
-    }
-    return newArray;
-}
+//         newArray.push(newElement);
+//     }
+//     return newArray;
+// }
 
 
-function highReduce(array, reduceFunction, startingValue) {  //funzione di riduzione
+// function highReduce(array, reduceFunction, startingValue) {  //funzione di riduzione
 
-    let accumulator = startingValue;
+//     let accumulator = startingValue;
 
-    for (let i = 0; i < array.length; i++) {
+//     for (let i = 0; i < array.length; i++) {
 
-        const current = array[i];
+//         const current = array[i];
 
-        accumulator = reduceFunction(accumulator, current, i) //la riduzione è esterna alla funzione, viene passata come argomento
+//         accumulator = reduceFunction(accumulator, current, i) //la riduzione è esterna alla funzione, viene passata come argomento
 
-    }
+//     }
 
-    return accumulator;
-}
+//     return accumulator;
+// }
 
-const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
+// const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
 
-const stringArray = ['pizza', 'spaghetti', 'frittata', 'lasagne'];
+// const stringArray = ['pizza', 'spaghetti', 'frittata', 'lasagne'];
 
 
-//Risolvere questi esercizi in tre modi:
-// - senza high order functions
-// - con le HOF create da noi
-// - con le HOF di JS
+// //Risolvere questi esercizi in tre modi:
+// // - senza high order functions
+// // - con le HOF create da noi
+// // - con le HOF di JS
 
-// filter
-//51) Scrivi una funzione che, dato un array di numeri, crei un array con tutti i numeri
-// maggiori di 100
+// // filter
+// //51) Scrivi una funzione che, dato un array di numeri, crei un array con tutti i numeri
+// // maggiori di 100
 
-//const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
+// //const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
 
-//SENZA HIGH ORDER FUNCTIONS (FUNZIONE STANDARD - FUNZIONE A BASSO LIVELLO)
-function numberGreaterThan100(nbr) {
-    const newArray = [];
+// //SENZA HIGH ORDER FUNCTIONS (FUNZIONE STANDARD - FUNZIONE A BASSO LIVELLO)
+// function numberGreaterThan100(nbr) {
+//     const newArray = [];
 
-    for (let i = 0; i < nbr.length; i++) {   //VEDI REPOSITORY DEL PROF. LUI LO HA FATTO COL FOR-OF
-        const element = nbr[i];
+//     for (let i = 0; i < nbr.length; i++) {   //VEDI REPOSITORY DEL PROF. LUI LO HA FATTO COL FOR-OF
+//         const element = nbr[i];
 
-        if (element > 100) {
-            newArray.push(element);
-        }
-    }
-    return newArray
-}
+//         if (element > 100) {
+//             newArray.push(element);
+//         }
+//     }
+//     return newArray
+// }
 
-console.log(numberGreaterThan100(numberArray));
+// console.log(numberGreaterThan100(numberArray));
 
 
 
-//CON HIGH ORDER FUNCTIONS
+// //CON HIGH ORDER FUNCTIONS
 
-function highFilter(array, conditionFunction) {
+// function highFilter(array, conditionFunction) {
 
-    const newArray = [];
+//     const newArray = [];
 
-    for (let i = 0; i < array.length; i++) {
-        const element = array[i];
+//     for (let i = 0; i < array.length; i++) {
+//         const element = array[i];
 
-        if (conditionFunction(element, i, array)) {   //la condizione è esterna alla funzione, viene passata come argomento
-            newArray.push(element);
-        }
-    }
-    return newArray;
-}
+//         if (conditionFunction(element, i, array)) {   //la condizione è esterna alla funzione, viene passata come argomento
+//             newArray.push(element);
+//         }
+//     }
+//     return newArray;
+// }
 
-function biggerThan100(nbr) {
-    if (nbr > 100) {    // questo è uguale a "return nbr > 100" che è una maniera più concisa di scriverla
-        return true;
-    } else {
-        return false;
-    }
-}
+// function biggerThan100(nbr) {
+//     if (nbr > 100) {    // questo è uguale a "return nbr > 100" che è una maniera più concisa di scriverla
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
 
-console.log(highFilter(numberArray, biggerThan100));
+// console.log(highFilter(numberArray, biggerThan100));
 
 
-//HIGH ORDER FUNCTIONS DI JS
+// //HIGH ORDER FUNCTIONS DI JS
 
-console.log(numberArray.filter(biggerThan100));  //filter è una funzione di ordine superiore: prende un’altra funzione come argomento e restituisce un nuovo array con gli elementi che soddisfano la condizione.
-console.log(numberArray.filter((nbr) => nbr > 100)); //questa è la versione lambda della condizione "biggerThan100"
-//nbr è l'elemento dell'array che viene passato alla funzione di filtro 
-//nbr è un nome di variabile che può essere cambiato a piacere
+// console.log(numberArray.filter(biggerThan100));  //filter è una funzione di ordine superiore: prende un’altra funzione come argomento e restituisce un nuovo array con gli elementi che soddisfano la condizione.
+// console.log(numberArray.filter((nbr) => nbr > 100)); //questa è la versione lambda della condizione "biggerThan100"
+// //nbr è l'elemento dell'array che viene passato alla funzione di filtro 
+// //nbr è un nome di variabile che può essere cambiato a piacere
 
-console.log(numberArray.filter((nbr) => {   //funziona esattamente uguale a quello di prima "console.log(numberArray.filter((nbr) => nbr > 100));"
-    if (nbr > 100) {                        //anche se lo rende più lunga ma nulla ci vieta di farlo così
-        return true;
-    } else {
-        return false;
-    }
-}));
+// console.log(numberArray.filter((nbr) => {   //funziona esattamente uguale a quello di prima "console.log(numberArray.filter((nbr) => nbr > 100));"
+//     if (nbr > 100) {                        //anche se lo rende più lunga ma nulla ci vieta di farlo così
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }));
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//52) Scrivi una funzione che, dato un array di stringhe, crei un array con tutte le stringhe 
-// che finiscono con 'a'
+// //52) Scrivi una funzione che, dato un array di stringhe, crei un array con tutte le stringhe 
+// // che finiscono con 'a'
 
-//const stringArray = ['pizza', 'spaghetti', 'frittata', 'lasagne'];
+// //const stringArray = ['pizza', 'spaghetti', 'frittata', 'lasagne'];
 
-//FUNZIONE STANDARD (FUNZIONE A BASSO LIVELLO)
-function wordsEndingWithA(array) {
+// //FUNZIONE STANDARD (FUNZIONE A BASSO LIVELLO)
+// function wordsEndingWithA(array) {
 
-    const newArray = [];
-    for (let i = 0; i < array.length; i++) {  //VEDI REPOSITORY DEL PROF. LUI LO HA FATTO COL FOR-OF
-        const str = array[i];
-        const lastChar = str[str.length - 1];  //per esempio se una stringa è lunga 4 (composta da 4 caratteri), l'ultimo carattere sarà nella posizione 3 perchè si conta dalla posizione 0
+//     const newArray = [];
+//     for (let i = 0; i < array.length; i++) {  //VEDI REPOSITORY DEL PROF. LUI LO HA FATTO COL FOR-OF
+//         const str = array[i];
+//         const lastChar = str[str.length - 1];  //per esempio se una stringa è lunga 4 (composta da 4 caratteri), l'ultimo carattere sarà nella posizione 3 perchè si conta dalla posizione 0
 
-        if (lastChar === 'a') {
-            newArray.push(str);
-        }
+//         if (lastChar === 'a') {
+//             newArray.push(str);
+//         }
 
-    }
-    return newArray;
-}
+//     }
+//     return newArray;
+// }
 
-console.log(wordsEndingWithA(stringArray));
+// console.log(wordsEndingWithA(stringArray));
 
 
-//HIGH ORDER FUNCTIONS
+// //HIGH ORDER FUNCTIONS
 
-function highFilter(array, conditionFunction) {
+// function highFilter(array, conditionFunction) {
 
-    const newArray = []
+//     const newArray = []
 
-    for (let i = 0; i < array.length; i++) {
-        const element = array[i];
+//     for (let i = 0; i < array.length; i++) {
+//         const element = array[i];
 
-        if (conditionFunction(element)) {   //la condizione è esterna alla funzione, viene passata come argomento
-            newArray.push(element);
-        }
-    }
-    return newArray;
-}
+//         if (conditionFunction(element)) {   //la condizione è esterna alla funzione, viene passata come argomento
+//             newArray.push(element);
+//         }
+//     }
+//     return newArray;
+// }
 
-function lastCharIsA(str) {   //conditionFunction = lastCharIsA
-    const lastChar = str[str.length - 1]; //[str.length - 1] prende l'ultimo carattere della stringa
-    if (lastChar === 'a') {  //l'if è una funzione che funziona come condizione
-        return true;
-    } else {                 //return str[str.length - 1] === 'a' | return lastChar === 'a' | return str.endsWith('a')
-        return false;        // sarebbero modi piuù brevi di accorciare la funzione
-    }
-}
-console.log(highFilter(stringArray, lastCharIsA)); //highFilter è la funzione di filtro che prende come argomento la condizione "lastCharIsA"
+// function lastCharIsA(str) {   //conditionFunction = lastCharIsA
+//     const lastChar = str[str.length - 1]; //[str.length - 1] prende l'ultimo carattere della stringa
+//     if (lastChar === 'a') {  //l'if è una funzione che funziona come condizione
+//         return true;
+//     } else {                 //return str[str.length - 1] === 'a' | return lastChar === 'a' | return str.endsWith('a')
+//         return false;        // sarebbero modi piuù brevi di accorciare la funzione
+//     }
+// }
+// console.log(highFilter(stringArray, lastCharIsA)); //highFilter è la funzione di filtro che prende come argomento la condizione "lastCharIsA"
 
 
-//HIGH ORDER FUNCTIONS DI JS
-console.log(stringArray.filter(lastCharIsA));
-console.log(stringArray.filter((str) => str[str.length - 1] === 'a'));   //questa è la versione lambda della condizione "lastCharIsA"
-//stringArray.filter(...) è una funzione di ordine superiore: prende un’altra funzione come argomento e restituisce un nuovo array con gli elementi che soddisfano la condizione.
+// //HIGH ORDER FUNCTIONS DI JS
+// console.log(stringArray.filter(lastCharIsA));
+// console.log(stringArray.filter((str) => str[str.length - 1] === 'a'));   //questa è la versione lambda della condizione "lastCharIsA"
+// //stringArray.filter(...) è una funzione di ordine superiore: prende un’altra funzione come argomento e restituisce un nuovo array con gli elementi che soddisfano la condizione.
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//53) Scrivi una funzione che, dato un array di numeri, crei un array con tutti i numeri
-// divisibili per 3
+// //53) Scrivi una funzione che, dato un array di numeri, crei un array con tutti i numeri
+// // divisibili per 3
 
-//const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
+// //const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
 
-//FUNZIONE STANDARD (FUNZIONE A BASSO LIVELLO)
+// //FUNZIONE STANDARD (FUNZIONE A BASSO LIVELLO)
 
-function numberDivisibleBy3(nbr) {
+// function numberDivisibleBy3(nbr) {
 
-    const newArray = [];
+//     const newArray = [];
 
-    for (let i = 0; i < nbr.length; i++) {    //VEDI REPOSITORY DEL PROF. LUI LO HA FATTO COL FOR-OF
-        const element = nbr[i];
+//     for (let i = 0; i < nbr.length; i++) {    //VEDI REPOSITORY DEL PROF. LUI LO HA FATTO COL FOR-OF
+//         const element = nbr[i];
 
-        if (element % 3 === 0) {
-            newArray.push(element);
-        }
-    }
-    return newArray;
-}
+//         if (element % 3 === 0) {
+//             newArray.push(element);
+//         }
+//     }
+//     return newArray;
+// }
 
-console.log(numberDivisibleBy3(numberArray));
+// console.log(numberDivisibleBy3(numberArray));
 
 
-//HIGH ORDER FUNCTIONS
+// //HIGH ORDER FUNCTIONS
 
-function highFilter(array, conditionFunction) {
+// function highFilter(array, conditionFunction) {
 
-    const newArray = []
+//     const newArray = []
 
-    for (let i = 0; i < array.length; i++) {
-        const element = array[i];
+//     for (let i = 0; i < array.length; i++) {
+//         const element = array[i];
 
-        if (conditionFunction(element)) {   //la condizione è esterna alla funzione, viene passata come argomento
-            newArray.push(element);
-        }
-    }
-    return newArray;
-}
+//         if (conditionFunction(element)) {   //la condizione è esterna alla funzione, viene passata come argomento
+//             newArray.push(element);
+//         }
+//     }
+//     return newArray;
+// }
 
-function IsDivisibleBy3(nbr) {
-    if (nbr % 3 === 0) {       // return nbr % 3 === 0 (più breve)
-        return true;
-    } else {
-        return false;
-    }
-}
+// function IsDivisibleBy3(nbr) {
+//     if (nbr % 3 === 0) {       // return nbr % 3 === 0 (più breve)
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
 
-console.log(highFilter(numberArray, IsDivisibleBy3));
+// console.log(highFilter(numberArray, IsDivisibleBy3));
 
 
-//HIGH ORDER FUNCTIONS DI JS
+// //HIGH ORDER FUNCTIONS DI JS
 
-console.log(numberArray.filter(IsDivisibleBy3));
-console.log(numberArray.filter((number) => number % 3 === 0));  //number è un nome a caso che ho messo alla variabile
+// console.log(numberArray.filter(IsDivisibleBy3));
+// console.log(numberArray.filter((number) => number % 3 === 0));  //number è un nome a caso che ho messo alla variabile
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// map
-//54) Scrivi una funzione che, dato un array di numeri, crei un array con tutti i numeri
-// elevati al cubo
+// // map
+// //54) Scrivi una funzione che, dato un array di numeri, crei un array con tutti i numeri
+// // elevati al cubo
 
-//const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
+// //const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
 
-//FUNZIONE STANDARD (FUNZIONE A BASSO LIVELLO)
+// //FUNZIONE STANDARD (FUNZIONE A BASSO LIVELLO)
 
-function numberCubed(nbr) {
+// function numberCubed(nbr) {
 
-    const newArray = [];
+//     const newArray = [];
 
-    for (let i = 0; i < nbr.length; i++) {       //VEDI REPOSITORY DEL PROF. LUI LO HA FATTO COL FOR-OF
-        const element = nbr[i];
-        newArray.push(element ** 3);
-    }
-    return newArray;
-}
+//     for (let i = 0; i < nbr.length; i++) {       //VEDI REPOSITORY DEL PROF. LUI LO HA FATTO COL FOR-OF
+//         const element = nbr[i];
+//         newArray.push(element ** 3);
+//     }
+//     return newArray;
+// }
 
-console.log(numberCubed(numberArray));
+// console.log(numberCubed(numberArray));
 
-//HIGH ORDER FUNCTIONS
+// //HIGH ORDER FUNCTIONS
 
-function highMap(array, transformFunction) {  //funzione di mappatura
+// function highMap(array, transformFunction) {  //funzione di mappatura
 
-    const newArray = [];
+//     const newArray = [];
 
-    for (let i = 0; i < array.length; i++) {
+//     for (let i = 0; i < array.length; i++) {
 
-        const element = array[i];
+//         const element = array[i];
 
-        const newElement = transformFunction(element, i); //la trasformazione è esterna alla funzione, viene passata come argomento
+//         const newElement = transformFunction(element, i); //la trasformazione è esterna alla funzione, viene passata come argomento
 
-        newArray.push(newElement);
-    }
-    return newArray;
-}
+//         newArray.push(newElement);
+//     }
+//     return newArray;
+// }
 
-function powerOfThree(nbr) {
-    return nbr ** 3;
-}
+// function powerOfThree(nbr) {
+//     return nbr ** 3;
+// }
 
-console.log(highMap(numberArray, powerOfThree));
+// console.log(highMap(numberArray, powerOfThree));
 
 
 
-//HIGH ORDER FUNCTIONS DI JS
+// //HIGH ORDER FUNCTIONS DI JS
 
-console.log(numberArray.map(powerOfThree));
-console.log(numberArray.map((number) => number ** 3));
+// console.log(numberArray.map(powerOfThree));
+// console.log(numberArray.map((number) => number ** 3));
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//55) Scrivi una funzione che, dato un array di stringhe, crei un array con tutte le stringhe
-// con la prima lettera maiuscola
+// //55) Scrivi una funzione che, dato un array di stringhe, crei un array con tutte le stringhe
+// // con la prima lettera maiuscola
 
-//const stringArray = ['pizza', 'spaghetti', 'frittata', 'lasagne'];
+// //const stringArray = ['pizza', 'spaghetti', 'frittata', 'lasagne'];
 
-//FUNZIONE STANDARD (FUNZIONE A BASSO LIVELLO)
+// //FUNZIONE STANDARD (FUNZIONE A BASSO LIVELLO)
 
-function wordToUpperCase(str) {
+// function wordToUpperCase(str) {
 
-    const newArray = [];
+//     const newArray = [];
 
-    for (let i = 0; i < str.length; i++) {
-        const element = str[i];   //invece di creare element potrei aver messo direttamente str[0]
-        newArray.push(element[0].toUpperCase() + element.slice(1));     //VEDI REPOSITORY DEL PROF. LUI LO HA FATTO UN PO' DIVERSO MA CON LO STESSO RISULTATO
-        //str.slice(1): Restituisce una nuova stringa che contiene tutti i caratteri a partire dal secondo (l'indice 1) fino alla fine.
-    }
-    return newArray;
-}
+//     for (let i = 0; i < str.length; i++) {
+//         const element = str[i];   //invece di creare element potrei aver messo direttamente str[0]
+//         newArray.push(element[0].toUpperCase() + element.slice(1));     //VEDI REPOSITORY DEL PROF. LUI LO HA FATTO UN PO' DIVERSO MA CON LO STESSO RISULTATO
+//         //str.slice(1): Restituisce una nuova stringa che contiene tutti i caratteri a partire dal secondo (l'indice 1) fino alla fine.
+//     }
+//     return newArray;
+// }
 
-console.log(wordToUpperCase(stringArray));
+// console.log(wordToUpperCase(stringArray));
 
 
-//HIGH ORDER FUNCTIONS
+// //HIGH ORDER FUNCTIONS
 
-function highMap(array, transformFunction) {  //funzione di mappatura
+// function highMap(array, transformFunction) {  //funzione di mappatura
 
-    const newArray = [];
+//     const newArray = [];
 
-    for (let i = 0; i < array.length; i++) {
+//     for (let i = 0; i < array.length; i++) {
 
-        const element = array[i];
+//         const element = array[i];
 
-        const newElement = transformFunction(element, i); //la trasformazione è esterna alla funzione, viene passata come argomento
+//         const newElement = transformFunction(element, i); //la trasformazione è esterna alla funzione, viene passata come argomento
 
-        newArray.push(newElement);
-    }
-    return newArray;
-}
+//         newArray.push(newElement);
+//     }
+//     return newArray;
+// }
 
-function firstCharToUpperCase(str) {
-    return str[0].toUpperCase() + str.slice(1);
+// function firstCharToUpperCase(str) {
+//     return str[0].toUpperCase() + str.slice(1);
 
-}
+// }
 
-console.log(highMap(stringArray, firstCharToUpperCase));
+// console.log(highMap(stringArray, firstCharToUpperCase));
 
 
-//HIGH ORDER FUNCTIONS DI JS
+// //HIGH ORDER FUNCTIONS DI JS
 
-console.log(stringArray.map(firstCharToUpperCase));
-console.log(stringArray.map((str) => str[0].toUpperCase() + str.slice(1)));
+// console.log(stringArray.map(firstCharToUpperCase));
+// console.log(stringArray.map((str) => str[0].toUpperCase() + str.slice(1)));
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//56) Scrivi una funzione che, dato un array di numeri, crei un array di stringhe di
-//cancelletti lunga quanto il numero originale
-// [3, 4, 1, 0] -> ['###', '####', '#', '']
+// //56) Scrivi una funzione che, dato un array di numeri, crei un array di stringhe di
+// //cancelletti lunga quanto il numero originale
+// // [3, 4, 1, 0] -> ['###', '####', '#', '']
 
-//const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
+// //const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
 
-//FUNZIONE STANDARD (FUNZIONE A BASSO LIVELLO)
+// //FUNZIONE STANDARD (FUNZIONE A BASSO LIVELLO)
 
-function numberToHashtag(nbr) {
+// function numberToHashtag(nbr) {
 
-    const newArray = [];
+//     const newArray = [];
 
-    for (let i = 0; i < nbr.length; i++) {
-        const element = nbr[i];
-        if (element > 0) {
-            newArray.push('#'.repeat(element));   //potevo mettere nbr[i] direttamente senza aver creato element
-        } else if (element < 0 || element === 0) {
-            newArray.push('');
-        }
-    }
-    return newArray;
-}
+//     for (let i = 0; i < nbr.length; i++) {
+//         const element = nbr[i];
+//         if (element > 0) {
+//             newArray.push('#'.repeat(element));   //potevo mettere nbr[i] direttamente senza aver creato element
+//         } else if (element < 0 || element === 0) {
+//             newArray.push('');
+//         }
+//     }
+//     return newArray;
+// }
 
-console.log(numberToHashtag(numberArray));
+// console.log(numberToHashtag(numberArray));
 
 
-//HIGH ORDER FUNCTIONS
+// //HIGH ORDER FUNCTIONS
 
-function highMap(array, transformFunction) {  //funzione di mappatura
+// function highMap(array, transformFunction) {  //funzione di mappatura
 
-    const newArray = [];
+//     const newArray = [];
 
-    for (let i = 0; i < array.length; i++) {
+//     for (let i = 0; i < array.length; i++) {
 
-        const element = array[i];
+//         const element = array[i];
 
-        const newElement = transformFunction(element, i); //la trasformazione è esterna alla funzione, viene passata come argomento
+//         const newElement = transformFunction(element, i); //la trasformazione è esterna alla funzione, viene passata come argomento
 
-        newArray.push(newElement);
-    }
-    return newArray;
-}
+//         newArray.push(newElement);
+//     }
+//     return newArray;
+// }
 
-function toHashtag(nbr) {
-    if (nbr > 0) {
-        return '#'.repeat(nbr);   //potevo mettere nbr[i] direttamente senza aver creato element
-    } else if (nbr < 0 || nbr === 0) {  //nbr <= 0
-        return '';
-    }
-}
+// function toHashtag(nbr) {
+//     if (nbr > 0) {
+//         return '#'.repeat(nbr);   //potevo mettere nbr[i] direttamente senza aver creato element
+//     } else if (nbr < 0 || nbr === 0) {  //nbr <= 0
+//         return '';
+//     }
+// }
 
-console.log(highMap(numberArray, toHashtag));
+// console.log(highMap(numberArray, toHashtag));
 
 
-//HIGH ORDER FUNCTIONS DI JS
+// //HIGH ORDER FUNCTIONS DI JS
 
-console.log(numberArray.map(toHashtag));
-console.log(numberArray.map((number) => number > 0 ? '#'.repeat(number) : ''));   //lambda con operatore ternario
+// console.log(numberArray.map(toHashtag));
+// console.log(numberArray.map((number) => number > 0 ? '#'.repeat(number) : ''));   //lambda con operatore ternario
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// reduce
-//57) Scrivi una funzione che, dato un array di numeri, li moltiplichi tutti tra loro
+// // reduce
+// //57) Scrivi una funzione che, dato un array di numeri, li moltiplichi tutti tra loro
 
-//const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
+// //const numberArray = [2, 4, 8, 112, 156, 22, -61.5, 6, -11.5, 4, 44, 8, 4];
 
-//FUNZIONE STANDARD (FUNZIONE A BASSO LIVELLO)
+// //FUNZIONE STANDARD (FUNZIONE A BASSO LIVELLO)
 
-function multiplyBetweenThem(nbr) {
+// function multiplyBetweenThem(nbr) {
 
-    let product = 1;  //valore neutro nella moltiplicazione
+//     let product = 1;  //valore neutro nella moltiplicazione
 
-    for (let i = 0; i < nbr.length; i++) {    //VEDI REPOSITORY DEL PROF. LUI LO HA FATTO COL FOR-OF e COL FOR NORMALE MA SENZA VALORE NEUTRO
-        const element = nbr[i];
-        product = product * element;
-    }
-    return product;
-}
+//     for (let i = 0; i < nbr.length; i++) {    //VEDI REPOSITORY DEL PROF. LUI LO HA FATTO COL FOR-OF e COL FOR NORMALE MA SENZA VALORE NEUTRO
+//         const element = nbr[i];
+//         product = product * element;
+//     }
+//     return product;
+// }
 
-console.log(multiplyBetweenThem(numberArray));
+// console.log(multiplyBetweenThem(numberArray));
 
 
-//HIGH ORDER FUNCTIONS
-//FATTO DAL PROF.
+// //HIGH ORDER FUNCTIONS
+// //FATTO DAL PROF.
 
-function highReduce(array, reduceFunction, startingValue) {  //funzione di riduzione
+// function highReduce(array, reduceFunction, startingValue) {  //funzione di riduzione
 
-    let accumulator = startingValue;
+//     let accumulator = startingValue;
 
-    for (let i = 0; i < array.length; i++) {
+//     for (let i = 0; i < array.length; i++) {
 
-        const current = array[i];
+//         const current = array[i];
 
-        accumulator = reduceFunction(accumulator, current, i) //la riduzione è esterna alla funzione, viene passata come argomento
+//         accumulator = reduceFunction(accumulator, current, i) //la riduzione è esterna alla funzione, viene passata come argomento
 
-    }
+//     }
 
-    return accumulator;
-}
+//     return accumulator;
+// }
 
-function multiplyAll(accumulator, current) {   //REDUCE FUNCTION
-    return accumulator * current;
-}
+// function multiplyAll(accumulator, current) {   //REDUCE FUNCTION
+//     return accumulator * current;
+// }
 
-console.log(highReduce(numberArray, multiplyAll, 1));  //1 è lo starting value
+// console.log(highReduce(numberArray, multiplyAll, 1));  //1 è lo starting value
 
 
-//HIGH ORDER FUNCTIONS DI JS
+// //HIGH ORDER FUNCTIONS DI JS
 
-console.log(numberArray.reduce(multiplyAll, 1));
-console.log(numberArray.reduce((acc, curr) => acc * curr, 1));
+// console.log(numberArray.reduce(multiplyAll, 1));
+// console.log(numberArray.reduce((acc, curr) => acc * curr, 1));
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//58) Scrivi una funzione che, dato un array di stringhe, crei una stringa composta
-// dalle prime tre lettere delle strighe originarie
+// //58) Scrivi una funzione che, dato un array di stringhe, crei una stringa composta
+// // dalle prime tre lettere delle strighe originarie
 
-//FATTO DAL PROF.
-//FUNZIONE STANDARD
+// //FATTO DAL PROF.
+// //FUNZIONE STANDARD
 
-function stringConcatFirst3(strArray) {
+// function stringConcatFirst3(strArray) {
 
-    let accumulator = '';
+//     let accumulator = '';
 
-    for (const current of strArray) {
+//     for (const current of strArray) {
 
-        const first3 = current.slice(0, 3);
+//         const first3 = current.slice(0, 3);
 
-        accumulator = accumulator + first3;
-    }
-    return accumulator;
-}
+//         accumulator = accumulator + first3;
+//     }
+//     return accumulator;
+// }
 
-console.log(stringConcatFirst3(stringArray));
+// console.log(stringConcatFirst3(stringArray));
 
 
 
-//HIGH ORDER FUNCTIONS
+// //HIGH ORDER FUNCTIONS
 
-function highReduce(array, reduceFunction, startingValue) {  //funzione di riduzione
+// function highReduce(array, reduceFunction, startingValue) {  //funzione di riduzione
 
-    let accumulator = startingValue;
+//     let accumulator = startingValue;
 
-    for (let i = 0; i < array.length; i++) {
+//     for (let i = 0; i < array.length; i++) {
 
-        const current = array[i];
+//         const current = array[i];
 
-        accumulator = reduceFunction(accumulator, current, i) //la riduzione è esterna alla funzione, viene passata come argomento
+//         accumulator = reduceFunction(accumulator, current, i) //la riduzione è esterna alla funzione, viene passata come argomento
 
-    }
+//     }
 
-    return accumulator;
-}
+//     return accumulator;
+// }
 
-function concatFirst3(accumulator, current) {  
-    const first3 = current.slice(0,3);
-    return accumulator + first3;
-}
+// function concatFirst3(accumulator, current) {  
+//     const first3 = current.slice(0,3);
+//     return accumulator + first3;
+// }
 
-console.log(highReduce(stringArray, concatFirst3, ''));
+// console.log(highReduce(stringArray, concatFirst3, ''));
 
-//HIGH ORDER FUNCTIONS DI JS
+// //HIGH ORDER FUNCTIONS DI JS
 
-console.log(stringArray.reduce(concatFirst3, ''));
-console.log(stringArray.reduce((acc, curr) => acc + curr.slice(0, 3), ''));
+// console.log(stringArray.reduce(concatFirst3, ''));
+// console.log(stringArray.reduce((acc, curr) => acc + curr.slice(0, 3), ''));
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//59) Scrivi una funzione che, dato un array di numeri, trovi il maggiore
+// //59) Scrivi una funzione che, dato un array di numeri, trovi il maggiore
 
-//FATTO DAL PROF.
-//FUNZIONE STANDARD
+// //FATTO DAL PROF.
+// //FUNZIONE STANDARD
 
-function maxArray(nbrArray) {  
+// function maxArray(nbrArray) {  
 
-    let accumulator = -Infinity;  //il valore -Infinity (meno infinito) rappresenta un numero più piccolo di qualsiasi altro numero possibile.
-    //Lo scopo è avere un valore di partenza più piccolo di qualsiasi numero possibile, così che il primo confronto (current > accumulator) risulti sempre vero per il primo elemento dell’array.
+//     let accumulator = -Infinity;  //il valore -Infinity (meno infinito) rappresenta un numero più piccolo di qualsiasi altro numero possibile.
+//     //Lo scopo è avere un valore di partenza più piccolo di qualsiasi numero possibile, così che il primo confronto (current > accumulator) risulti sempre vero per il primo elemento dell’array.
 
-    for (const current of nbrArray) {
-        //Il ciclo for...of scorre tutti i numeri dell’array.
+//     for (const current of nbrArray) {
+//         //Il ciclo for...of scorre tutti i numeri dell’array.
        
-        if (current > accumulator) {
-            accumulator = current;
-        }
-        //Ogni volta che trova un numero (current) più grande del valore salvato in accumulator, lo aggiorna.
-    }
-    return accumulator;
-}
+//         if (current > accumulator) {
+//             accumulator = current;
+//         }
+//         //Ogni volta che trova un numero (current) più grande del valore salvato in accumulator, lo aggiorna.
+//     }
+//     return accumulator;
+// }
 
-console.log(maxArray(numberArray));
-
-
-// O IN QUESTO MODO
-function maxArrayV2(nbrArray) {
-
-    let accumulator = nbrArray[0];
-
-    for (let i = 1; i < nbrArray.length; i++) {
-        const current = nbrArray[i];
-
-        if (current > accumulator) {
-            accumulator = current;
-        }
-
-    }
-    return accumulator;
-}
-
-console.log(maxArrayV2(numberArray));
-
-//HIGH ORDER FUNCTIONS
-
-function highReduce(array, reduceFunction, startingValue) {  //funzione di riduzione
-
-    let accumulator = startingValue;
-
-    for (let i = 0; i < array.length; i++) {
-
-        const current = array[i];
-
-        accumulator = reduceFunction(accumulator, current, i) //la riduzione è esterna alla funzione, viene passata come argomento
-
-    }
-
-    return accumulator;
-}
+// console.log(maxArray(numberArray));
 
 
-function max(acc, curr) {
-    if (curr > acc) {
-        return curr;
-    } else {
-        return acc;
-    }
-}
+// // O IN QUESTO MODO
+// function maxArrayV2(nbrArray) {
 
-console.log(highReduce(numberArray, max, -Infinity));
+//     let accumulator = nbrArray[0];
 
+//     for (let i = 1; i < nbrArray.length; i++) {
+//         const current = nbrArray[i];
 
-//HIGH ORDER FUNCTIONS DI JS
+//         if (current > accumulator) {
+//             accumulator = current;
+//         }
 
-console.log(numberArray.reduce(max, -Infinity));
-//O 
-console.log(numberArray.reduce(max));  //-Infinity non è necessario
-console.log(numberArray.reduce((acc, curr) => curr > acc ? curr : acc));  //forma lambda
-//O
-console.log(numberArray.reduce((acc, curr) => {
-    if (curr > acc) {  //forma lambda MA SENZA operatore ternario
-        return curr;
-    } else {
-        return acc;
-    }
-}));
+//     }
+//     return accumulator;
+// }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// console.log(maxArrayV2(numberArray));
 
-//60) Scrivi una funzione che, dato un array di stringhe, trovi la stringa con più
-// volte ripetuta la lettera t;
+// //HIGH ORDER FUNCTIONS
 
-//FATTO DAL PROF.
-//FUNZIONE STANDARD (FUNZIONE A BASSO LIVELLO)
+// function highReduce(array, reduceFunction, startingValue) {  //funzione di riduzione
 
-function countT(str) {
-    let count = 0;
+//     let accumulator = startingValue;
 
-    for (let i = 0; i < str.length; i++) {
-        const char = str[i];
-        const upperChar = char.toUpperCase();
+//     for (let i = 0; i < array.length; i++) {
 
-        if (upperChar === 'T') {
-            count++;
-        }
-    }
-    return count;
-}
+//         const current = array[i];
 
-function findTheStringWithMoreT(strArray) {  //spezzo la funzione cioè faccio una funzione in più (funzione countT)
+//         accumulator = reduceFunction(accumulator, current, i) //la riduzione è esterna alla funzione, viene passata come argomento
 
-    let accumulator = '';
+//     }
 
-    let accumulatorTcount = 0;
-
-    for (const current of strArray) {
-
-        const currentTcount = countT(current);
-
-        if (currentTcount > accumulatorTcount) {
-            accumulator = current;
-            accumulatorTcount = currentTcount;
-        }
-    }
-    return accumulator;
-}
-
-console.log(findTheStringWithMoreT(stringArray));
+//     return accumulator;
+// }
 
 
+// function max(acc, curr) {
+//     if (curr > acc) {
+//         return curr;
+//     } else {
+//         return acc;
+//     }
+// }
 
-//POSSIAMO ACCORCIARLA - FARLA PIù CONCISA
-
-function findTheStringWithMoreTV2(strArray) {  
-
-    let accumulator = '';
-
-    for (const current of strArray) {
-
-        if (countT(current) > countT(accumulator)) {
-
-            accumulator = current;
-
-        }   
-    }
-    return accumulator;
-}
-
-console.log(findTheStringWithMoreTV2(stringArray));
+// console.log(highReduce(numberArray, max, -Infinity));
 
 
-//HIGH ORDER FUNCTIONS
+// //HIGH ORDER FUNCTIONS DI JS
 
-function highReduce(array, reduceFunction, startingValue) {  //funzione di riduzione
+// console.log(numberArray.reduce(max, -Infinity));
+// //O 
+// console.log(numberArray.reduce(max));  //-Infinity non è necessario
+// console.log(numberArray.reduce((acc, curr) => curr > acc ? curr : acc));  //forma lambda
+// //O
+// console.log(numberArray.reduce((acc, curr) => {
+//     if (curr > acc) {  //forma lambda MA SENZA operatore ternario
+//         return curr;
+//     } else {
+//         return acc;
+//     }
+// }));
 
-    let accumulator = startingValue;
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    for (let i = 0; i < array.length; i++) {
+// //60) Scrivi una funzione che, dato un array di stringhe, trovi la stringa con più
+// // volte ripetuta la lettera t;
 
-        const current = array[i];
+// //FATTO DAL PROF.
+// //FUNZIONE STANDARD (FUNZIONE A BASSO LIVELLO)
 
-        accumulator = reduceFunction(accumulator, current, i) //la riduzione è esterna alla funzione, viene passata come argomento
+// function countT(str) {
+//     let count = 0;
 
-    }
+//     for (let i = 0; i < str.length; i++) {
+//         const char = str[i];
+//         const upperChar = char.toUpperCase();
 
-    return accumulator;
-}
+//         if (upperChar === 'T') {
+//             count++;
+//         }
+//     }
+//     return count;
+// }
 
-function compareTNumber(acc, curr) {
-    if (countT(curr) > countT(acc)) {
-        return curr;
-    }
-    return acc;
-}
+// function findTheStringWithMoreT(strArray) {  //spezzo la funzione cioè faccio una funzione in più (funzione countT)
 
-console.log(highReduce(stringArray, compareTNumber, ''));
+//     let accumulator = '';
+
+//     let accumulatorTcount = 0;
+
+//     for (const current of strArray) {
+
+//         const currentTcount = countT(current);
+
+//         if (currentTcount > accumulatorTcount) {
+//             accumulator = current;
+//             accumulatorTcount = currentTcount;
+//         }
+//     }
+//     return accumulator;
+// }
+
+// console.log(findTheStringWithMoreT(stringArray));
 
 
-//HIGH ORDER FUNCTIONS DI JS
 
-console.log(stringArray.reduce(compareTNumber, ''));
-//IL PROF. NON HA FATTO LA FORMA LAMBDA PERCHé SAREBBE TROPPO COMPLICATA PER NOI
+// //POSSIAMO ACCORCIARLA - FARLA PIù CONCISA
+
+// function findTheStringWithMoreTV2(strArray) {  
+
+//     let accumulator = '';
+
+//     for (const current of strArray) {
+
+//         if (countT(current) > countT(accumulator)) {
+
+//             accumulator = current;
+
+//         }   
+//     }
+//     return accumulator;
+// }
+
+// console.log(findTheStringWithMoreTV2(stringArray));
+
+
+// //HIGH ORDER FUNCTIONS
+
+// function highReduce(array, reduceFunction, startingValue) {  //funzione di riduzione
+
+//     let accumulator = startingValue;
+
+//     for (let i = 0; i < array.length; i++) {
+
+//         const current = array[i];
+
+//         accumulator = reduceFunction(accumulator, current, i) //la riduzione è esterna alla funzione, viene passata come argomento
+
+//     }
+
+//     return accumulator;
+// }
+
+// function compareTNumber(acc, curr) {
+//     if (countT(curr) > countT(acc)) {
+//         return curr;
+//     }
+//     return acc;
+// }
+
+// console.log(highReduce(stringArray, compareTNumber, ''));
+
+
+// //HIGH ORDER FUNCTIONS DI JS
+
+// console.log(stringArray.reduce(compareTNumber, ''));
+// //IL PROF. NON HA FATTO LA FORMA LAMBDA PERCHé SAREBBE TROPPO COMPLICATA PER NOI
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -736,16 +736,67 @@ const prodotti = [
 
 //61) mettere in ordine l'array di prodotti per prezzo dal più costoso in giù
 
-function pricesDescending(product1, product2) {
-    return product2.prezzo - product1.prezzo;
-}
+// function pricesDescending(product1, product2) {
+//     return product2.prezzo - product1.prezzo;
+// }
 
-prodotti.sort(pricesDescending);
-console.log(prodotti);
+// prodotti.sort(pricesDescending);
+// console.log(prodotti);
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //62) mettere in ordine per nome discendente
+
+// function nameDescending(product1, product2) {
+//     return product2.nome.localeCompare(product1.nome);
+// }
+
+// prodotti.sort(nameDescending);
+// console.log(prodotti);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 //63) mettere in ordine per categoria ascendente, e se uguali per peso dal più pesante
+// function categoryAndWeightAscendent(product1, product2) {
+//      if (product1.categoria === product2.categoria) {
+//         return product1.peso - product2.peso; //se le categorie sono uguali, ordina per peso dal più pesante
+//     } else {      
+//     return product1.categoria.localeCompare(product2.categoria); //ordina per categoria in ordine alfabetico ascendente
+//    }
+// }
+
+// prodotti.sort(categoryAndWeightAscendent);
+// console.log(prodotti); 
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //64) mettere in ordine per anno di scadenza dal più vicino
+
+// function expirationYearAscendent(product1, product2) {
+//     return product1.scadenza > product2.scadenza;  //se la scadenza del prodotto1 è maggiore di quella del prodotto2, allora il prodotto1 viene considerato "maggiore" e viene spostato dopo il prodotto2 nell'ordinamento
+// } // il segno ">" funziona perchè le date in formato stringa "YYYY-MM-DD" possono essere confrontate direttamente in questo modo
+// // poichè l'ordine lessicografico corrisponde all'ordine cronologico in questo formato
+// //la scadenza è una stringa che rappresenta una data nel formato "YYYY-MM-DD"
+
+// prodotti.sort(expirationYearAscendent);
+// console.log(prodotti);
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //65) mettere in ordine per categoria discendente, se uguali per peso dal più piccolo, se uguali per nome ascendente
+
+function categoryAndWeightDescendent(product1, product2) {
+    if (product1.categoria === product2.categoria) {
+        return product2.peso - product1.peso;
+    } else {
+        return product2.categoria.localeCompare(product1.categoria);
+    }
+}
+
+prodotti.sort(categoryAndWeightDescendent);
+console.log(prodotti);
 
