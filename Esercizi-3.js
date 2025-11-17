@@ -735,8 +735,9 @@ const prodotti = [
 
 
 //61) mettere in ordine l'array di prodotti per prezzo dal più costoso in giù
+//VEDI REPOSITORY DEL PROF., LUI L'HA FATTO IN MODO PIù LUNGO (PASSO A PASSO) E FORMA LAMBDA
 
-// function pricesDescending(product1, product2) {
+// function pricesDescending(product1, product2) {   
 //     return product2.prezzo - product1.prezzo;
 // }
 
@@ -746,6 +747,7 @@ const prodotti = [
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //62) mettere in ordine per nome discendente
+//VEDI REPOSITORY DEL PROF., LUI L'HA FATTO IN MODO PIù LUNGO (PASSO A PASSO) E FORMA LAMBDA
 
 // function nameDescending(product1, product2) {
 //     return product2.nome.localeCompare(product1.nome);
@@ -757,8 +759,9 @@ const prodotti = [
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
 //63) mettere in ordine per categoria ascendente, e se uguali per peso dal più pesante
+//VEDI REPOSITORY DEL PROF., LUI L'HA FATTO IN MANIERA UN PO' DIVERSA MA CON LO STESSO RISULTATO
+
 // function categoryAndWeightAscendent(product1, product2) {
 //      if (product1.categoria === product2.categoria) {
 //         return product1.peso - product2.peso; //se le categorie sono uguali, ordina per peso dal più pesante
@@ -774,6 +777,7 @@ const prodotti = [
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //64) mettere in ordine per anno di scadenza dal più vicino
+//VEDI REPOSITORY DEL PROF., LUI L'HA FATTO IN MANIERA DIVERSA (HA USATO .SLICE()) MA CON LO STESSO RISULTATO
 
 // function expirationYearAscendent(product1, product2) {
 //     return product1.scadenza > product2.scadenza;  //se la scadenza del prodotto1 è maggiore di quella del prodotto2, allora il prodotto1 viene considerato "maggiore" e viene spostato dopo il prodotto2 nell'ordinamento
@@ -789,14 +793,35 @@ const prodotti = [
 
 //65) mettere in ordine per categoria discendente, se uguali per peso dal più piccolo, se uguali per nome ascendente
 
-function categoryAndWeightDescendent(product1, product2) {
-    if (product1.categoria === product2.categoria) {
-        return product2.peso - product1.peso;
-    } else {
-        return product2.categoria.localeCompare(product1.categoria);
-    }
-}
+// function categoryAndWeightDescendent(product1, product2) {
+//     if (product1.categoria === product2.categoria) {
+//         if (product1.peso === product2.peso) {
+//         return product1.nome.localeCompare(product2.nome);
+//         }
+//         return product2.peso - product1.peso;
+//     } 
+//         return product2.categoria.localeCompare(product1.categoria);
+// }
 
-prodotti.sort(categoryAndWeightDescendent);
-console.log(prodotti);
+// prodotti.sort(categoryAndWeightDescendent);
+// console.log(prodotti);
+
+// //O IN MODO "PIù LEGGIBILE"
+
+// function categoryAndWeightDescendent2(product1, product2) {
+//     if (product1.categoria !== product2.categoria) {
+//         return product2.categoria.localeCompare(product1.categoria);
+//     } else if (product1.peso !== product2.peso) {
+//         return product1.peso - product2.peso;
+//     } else {
+//         product1.nome.localeCompare(product2.nome)
+//     }
+//     }
+
+//     prodotti.sort(categoryAndWeightDescendent2);
+//     console.log(prodotti);
+    
+        
+
+
 

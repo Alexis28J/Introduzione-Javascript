@@ -521,6 +521,44 @@
     
 
 
+// SORTING NOT IN PLACE
+
+
+const numbers4 = [200, 2, -20, 12, 5, 1000];
+
+//facciamo una map 
+// const doubleNumbers = numbers4.map((n) => n*2);  //Il metodo .map() in JavaScript serve a iterare SU ogni elemento di un array, applicare una funzione a ciascuno di essi e restituire un nuovo array contenente i risultati modificati. 
+
+// console.log(doubleNumbers);
+// console.log(numbers4);
+
+
+//ora facciamo una sort
+
+// const sortedNumbers = numbers4.sort((n1, n2) => n1 - n2);   // è uguale a "numbers4.sort((n1, n2) => n1 - n2);"
+
+// console.log(sortedNumbers);  //errore prodotto da una vecchia versione di Javascript
+// console.log(numbers4);
+
+
+//Per corregere l'errore possiamo clonare l'array e trasformarlo
+// function correctSort(array, compareFn) {
+
+//     const clone = [...array];    //clono l'array "vecchio"  //notazione più usata
+//     // const clone = newArray(...array); //scrito in un altro modo 
+//     // const clone = Array.from(array);  //funziona uguale al primo
+
+//     clone.sort(compareFn);
+
+//     return clone;
+// }
+
+// const sortedNumbers = correctSort(numbers4, (n1, n2) => n1 - n2);
+// console.log(sortedNumbers);
+// console.log(numbers4);
+
+
+
 
 
 
